@@ -160,6 +160,7 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .method-step-title input {
@@ -204,10 +205,8 @@ textarea {
 
 .black-cta,
 .white-cta {
-  display: inline-block;
   margin-right: 0.3em;
   padding: 0.3em 0.6em;
-  height: fit-content;
   border-radius: 3px;
   color: white;
   border: 1px solid black;
