@@ -1,4 +1,8 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
+import EditableButton from './components/EditableButton';
 
-createApp(App).mount('#app')
+const app = createApp(App);
+app.component('EditableButton', EditableButton);
+
+app.mount('#app');
