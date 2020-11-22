@@ -11,7 +11,7 @@ export class RecipeMethod {
     const newStep = {
       title: 'New Step',
       duration: 0,
-      instructions: 'Tap to edit. ',
+      instructions: 'Tap to edit description. ',
       randomKey: Math.random(),
     };
     this.steps.push(newStep);
