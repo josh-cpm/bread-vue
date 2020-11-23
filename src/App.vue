@@ -4,7 +4,7 @@
     :recipeDescription="recipeDescription"
   ></Header>
   <Summary></Summary>
-  <Ingredients></Ingredients>
+  <Ingredients :ingredients="ingredients"></Ingredients>
   <Method></Method>
 </template>
 
@@ -13,6 +13,7 @@ import Method from './components/Method.vue';
 import Header from './components/Header';
 import Summary from './components/Summary';
 import Ingredients from './components/Ingredients';
+import { recipe } from './modules/recipeData';
 
 export default {
   name: 'App',
@@ -24,8 +25,9 @@ export default {
   },
   data() {
     return {
-      recipeTitle: 'Basic Sourdough',
-      recipeDescription: 'My go-to weekday loaf.',
+      recipeTitle: recipe.recipeInfo.title,
+      recipeDescription: recipe.recipeInfo.description,
+      ingredients: recipe.ingredients,
     };
   },
 };
@@ -34,5 +36,13 @@ export default {
 <style>
 html {
   font-family: 'Roboto', sans-serif;
+}
+
+.white-cta {
+  padding: 0.3em 0.6em;
+  border-radius: 3px;
+  background: white;
+  border: 1px solid black;
+  cursor: pointer;
 }
 </style>

@@ -1,6 +1,6 @@
-const recipe = {
+export const recipe = {
   recipeInfo: {
-    title: 'Basic Sourdoug',
+    title: 'Basic Sourdough',
     description: 'My go-to weekday loaf.',
   },
   ingredients: [
