@@ -11,16 +11,16 @@
     "chrono-node": "^2.1.9",
     "core-js": "^3.6.5",
     "dateformat": "^3.0.3",
-    "vue": "^3.0.0"
+    "vue": "^3.0.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/cli-plugin-babel": "^4.5.8",
+    "@vue/cli-plugin-eslint": "^4.5.8",
+    "@vue/cli-service": "^4.5.8",
+    "@vue/compiler-sfc": "^3.0.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0"
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^7.1.0"
   },
   "eslintConfig": {
     "root": true,
@@ -40,5 +40,18 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josh-cpm/bread-vue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josh-cpm/bread-vue/issues"
+  },
+  "homepage": "https://github.com/josh-cpm/bread-vue#readme"
 }

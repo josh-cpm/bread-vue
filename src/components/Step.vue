@@ -20,23 +20,6 @@
       <div class="step-editor-header">
         <h4>Edit Step</h4>
       </div>
-      <div class="step-editor-options ">
-        <button @click="$emit('delete-step', index)" class="inline-button">
-          Delete Step
-        </button>
-        <!-- <button
-          @click="$emit('move', { index, direction: 'up' })"
-          class="inline-button"
-        >
-          Move Up
-        </button>
-        <button
-          @click="$emit('move', { index, direction: 'down' })"
-          class="inline-button"
-        >
-          Move Down
-        </button> -->
-      </div>
       <div>
         <EditableButton
           :name="this.$options.name"
@@ -72,9 +55,28 @@
           @inputText="updateDuration($event)"
         ></EditableButton>
       </div>
-      <button class="black-cta" @click="toggleEditor">
-        Done
-      </button>
+      <div class="step-editor-options ">
+        <button class="black-cta" @click="toggleEditor">
+          Done
+        </button>
+        <div class="step-editor-option-buttons">
+          <button @click="$emit('delete-step', index)" class="white-cta">
+            Delete Step
+          </button>
+          <button
+            @click="$emit('move', { index, direction: 'up' })"
+            class="white-cta arrow-icon"
+          >
+            ⬆
+          </button>
+          <button
+            @click="$emit('move', { index, direction: 'down' })"
+            class="white-cta arrow-icon"
+          >
+            ⬇
+          </button>
+        </div>
+      </div>
       <div class="black-line"></div>
     </div>
   </div>
@@ -151,18 +153,11 @@ input {
   position: relative;
 }
 
-.step-editor-header {
-}
-
 .step-editor-options {
-  position: absolute;
   display: flex;
-  flex-direction: column;
-  right: 0;
-  top: 0;
-  margin-top: 1.33rem;
-  margin-right: 1rem;
-  gap: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .method-step-title input {
@@ -205,26 +200,33 @@ textarea {
   border: none;
 }
 
-.black-cta {
-  display: inline-block;
+.black-cta,
+.white-cta {
   margin-right: 0.3em;
   padding: 0.3em 0.6em;
-  height: fit-content;
   border-radius: 3px;
   color: white;
   border: 1px solid black;
-  background: black;
+  background-color: black;
   cursor: pointer;
   font-size: 1rem;
 }
 
-.black-cta:hover {
-  border: 2px solid black;
+.white-cta {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }
 
 .black-line {
   height: 1px;
   background-color: black;
   margin-top: 1rem;
+}
+
+.step-editor-option-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 </style>

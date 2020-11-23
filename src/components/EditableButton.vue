@@ -121,10 +121,6 @@ input::placeholder {
   cursor: pointer;
 }
 
-.white-cta:hover {
-  /* border: 2px solid black; */
-}
-
 .white-cta input:focus {
   padding: 0;
   outline: none;
