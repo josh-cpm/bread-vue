@@ -153,9 +153,6 @@ input {
   position: relative;
 }
 
-.step-editor-header {
-}
-
 .step-editor-options {
   display: flex;
   flex-direction: row;
@@ -219,10 +216,6 @@ textarea {
   background-color: white;
   color: black;
   border: 1px solid black;
-}
-
-.arrow-icon {
-  /* height: 1.9em; */
 }
 
 .black-line {
