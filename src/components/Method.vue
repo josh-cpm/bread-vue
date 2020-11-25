@@ -31,31 +31,26 @@
 </template>
 
 <script>
+import { method } from '../modules/methodSteps';
 import Step from './Step.vue';
 import StartTime from './StartTime';
 import * as chrono from 'chrono-node';
-import { RecipeMethod } from '../modules/RecipeMethod';
 
 export default {
   name: 'Method',
   components: { Step, StartTime },
-  props: {
-    steps: Array,
-  },
   data() {
     return {
-      method: {},
+      method,
       startTimeActive: false,
     };
-  },
-  created() {
-    this.method = new RecipeMethod(this.steps, new Date());
   },
   methods: {
     changeStartTime(timeString) {
       if (timeString) {
         const time = chrono.parseDate(timeString);
         this.method.startTime = time;
+        // this.method.addTimeToSteps();
       }
     },
     changeStepTime(e) {
@@ -65,10 +60,11 @@ export default {
         this.method.startTime = time;
       } else {
         this.method.steps[index - 1].duration = Math.ceil(
-          (new Date(time) - new Date(this.method.steps[index - 1].time)) /
+          (new Date(time) - new Date(method.steps[index - 1].time)) /
             (1000 * 60)
         );
       }
+      // this.method.addTimeToSteps();
     },
     priorStepDuration(index) {
       if (index > 0) {
