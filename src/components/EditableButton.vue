@@ -27,14 +27,14 @@ Example:
 <template>
   <div>
     <div v-if="editingActive" class="white-cta start-time">
-      <span>{{ label }}:</span>
+      <span>{{ label }}</span>
       <input
         :ref="name"
         :type="inputType"
         :placeholder="buttonValue"
         @keydown.enter="toggleEditing"
         @keydown.escape="toggleEditing"
-        @blur="toggleEditing('close')"
+        @blur="toggleEditing"
         @input="
           $emit('input-text', $event.target.value);
           resizeInput($event.target);
@@ -75,16 +75,10 @@ export default {
     focusOnInput() {
       this.$nextTick(() => this.$refs[this.name].focus());
     },
-    toggleEditing(direction) {
+    toggleEditing() {
       if (this.editingActive) {
         this.editingActive = false;
       } else {
-        this.editingActive = true;
-      }
-      // force editing to start or stop
-      if (direction == 'close') {
-        this.editingActive = false;
-      } else if (direction == 'open') {
         this.editingActive = true;
       }
     },

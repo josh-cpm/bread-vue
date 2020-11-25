@@ -8,7 +8,7 @@
   <div class="spacer"></div>
   <Ingredients :ingredients="ingredients"></Ingredients>
   <div class="spacer"></div>
-  <Method :steps="steps"></Method>
+  <Method></Method>
 </template>
 
 <script>
@@ -31,7 +31,6 @@ export default {
       recipeTitle: recipe.recipeInfo.title,
       recipeDescription: recipe.recipeInfo.description,
       ingredients: recipe.ingredients,
-      steps: recipe.steps,
     };
   },
 };
