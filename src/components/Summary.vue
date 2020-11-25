@@ -10,7 +10,7 @@
   </div>
   <div class="dough-summary-stats">
     <span class="end-hydration-label">End hydration 82%</span>
-    <span class="end-hydration-label">• Total dough 1350g</span>
+    <span class="end-hydration-label"> • Total dough 1350g</span>
   </div>
 </template>
 
@@ -21,6 +21,21 @@ export default {
 </script>
 
 <style scoped>
+.tiptext {
+  /* font-family: Monaco; */
+  font-size: 0.7rem;
+  color: #6f6f6f;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0.5rem;
+  max-width: 20rem;
+}
+
 .white-cta {
   display: inline-block;
   margin-right: 0.3em;
@@ -29,5 +44,11 @@ export default {
   background: white;
   border: 1px solid black;
   cursor: pointer;
+}
+
+.dough-summary-stats {
+  font-size: 0.7rem;
+  color: #6f6f6f;
+  margin-top: 0.7rem;
 }
 </style>

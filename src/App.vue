@@ -3,8 +3,11 @@
     :recipeTitle="recipeTitle"
     :recipeDescription="recipeDescription"
   ></Header>
+  <div class="spacer"></div>
   <Summary></Summary>
+  <div class="spacer"></div>
   <Ingredients :ingredients="ingredients"></Ingredients>
+  <div class="spacer"></div>
   <Method></Method>
 </template>
 
@@ -34,8 +37,31 @@ export default {
 </script>
 
 <style>
-html {
+* {
   font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 20px;
+}
+
+h1 {
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+h3 {
+  font-size: 0.8rem;
+}
+
+#app {
+  margin: 2rem 1rem;
+}
+
+.spacer {
+  height: 2rem;
 }
 
 .white-cta {

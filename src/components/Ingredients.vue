@@ -38,4 +38,19 @@ export default {
   flex-direction: column;
   max-width: 25rem;
 }
+
+.tiptext {
+  /* font-family: Monaco; */
+  font-size: 0.7rem;
+  color: #6f6f6f;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0.5rem;
+  max-width: 20rem;
+}
 </style>
