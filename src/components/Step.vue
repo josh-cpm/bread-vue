@@ -229,4 +229,9 @@ textarea {
   flex-direction: row;
   align-items: center;
 }
+
+.step-editor-header {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 </style>
