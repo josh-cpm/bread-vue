@@ -33,6 +33,10 @@ export default {
 </script>
 
 <style scoped>
+#add-ing-button {
+  margin-top: 1rem;
+}
+
 .ingredient-list {
   display: flex;
   flex-direction: column;
