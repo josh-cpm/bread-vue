@@ -6,11 +6,12 @@
       :value="name"
     ></TextInput>
     <span class="ingredient-row-sub-flex">
-      <TextInput
-        class="ingredient-quantity"
-        :value="Math.round(quantity) + 'g'"
-      ></TextInput>
-      <span class="ingredient-percent ">{{ Math.round(bpercent * 100) }}%</span>
+      <input class="ingredient-quantity" :value="Math.round(quantity)" />
+      g
+      <input
+        class="ingredient-percent "
+        :value="Math.round(bpercent * 100)"
+      /><span class="gray-text">%</span>
     </span>
   </div>
 </template>
@@ -41,14 +42,26 @@ export default {
 </script>
 
 <style scoped>
+input {
+  border: none;
+  font-size: 1rem;
+  padding: 0.3;
+}
+
+input::placeholder {
+  font-style: normal;
+  font-family: Roboto;
+}
+
 .ingredient-row-sub-flex {
   display: flex;
   flex-direction: row;
 }
 
 .ingredient-quantity {
-  margin-right: 1rem;
+  margin-right: 0.1rem;
   text-align: right;
+  width: 7ch;
 }
 
 .ingredient-name {
@@ -56,6 +69,13 @@ export default {
 }
 
 .ingredient-percent {
+  color: #6f6f6f;
+  text-align: right;
+  width: 4ch;
+  margin-right: 0.1rem;
+}
+
+.gray-text {
   color: #6f6f6f;
 }
 </style>
