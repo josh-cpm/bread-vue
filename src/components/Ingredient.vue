@@ -1,12 +1,25 @@
 <template>
-  <div class="ingredient-row white-cta">
+  <div class="ingredient-row">
+    <TextInput
+      class="ingredient-name"
+      @input="logger"
+      :value="name"
+    ></TextInput>
     <span class="ingredient-row-sub-flex">
-      <span class="ingredient-quantity">{{ Math.round(quantity) }}g</span>
-      <span class="ingredient-name">{{ name }}</span>
+      <input
+        class="ingredient-quantity"
+        type="number"
+        :value="Math.round(quantity)"
+      />
+      <span class="label black">
+        g
+      </span>
+      <input
+        class="ingredient-percent "
+        :value="Math.round(bpercent * 100)"
+        type="number"
+      /><span class="label gray">%</span>
     </span>
-    <span class="ingredient-percent inline-button"
-      >{{ Math.round(bpercent * 100) }}%</span
-    >
   </div>
 </template>
 
@@ -19,16 +32,33 @@ export default {
     type: String,
     bpercent: Number,
   },
+  data() {
+    return {
+      editing: false,
+    };
+  },
+  methods: {
+    toggleEditor() {
+      this.editing ? (this.editing = false) : (this.editing = true);
+    },
+    logger() {
+      console.log('hi');
+    },
+  },
 };
 </script>
 
 <style scoped>
-.ingredient-row {
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+input {
+  border: none;
+  font-size: 1rem;
+  padding: 0.3;
+  margin: 0 0.1rem 0 0.3rem;
+}
+
+input::placeholder {
+  font-style: normal;
+  font-family: Roboto;
 }
 
 .ingredient-row-sub-flex {
@@ -37,7 +67,9 @@ export default {
 }
 
 .ingredient-quantity {
-  min-width: 4em;
+  margin-right: 0.1rem;
+  text-align: right;
+  width: 7ch;
 }
 
 .ingredient-name {
@@ -45,19 +77,18 @@ export default {
 }
 
 .ingredient-percent {
-  align-self: flex-start;
+  color: #6f6f6f;
+  text-align: right;
+  width: 4ch;
 }
 
-.inline-button {
-  display: inline-block;
+.gray {
   color: #6f6f6f;
-  font-size: 0.7rem;
-  font-family: Monaco;
-  font-style: normal;
-  font-weight: normal;
-  padding: 0.2em 0.3em;
-  margin-left: 0.2rem;
-  border: 1px solid #f1f2f0;
-  border-radius: 3px;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>

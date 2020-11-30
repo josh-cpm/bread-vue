@@ -2,7 +2,6 @@
   <div>
     <div class="section-header">
       <h3>INGREDIENTS</h3>
-      <span class="tiptext">Tap to edit</span>
     </div>
     <div class="ingredient-list">
       <Ingredient
@@ -12,8 +11,9 @@
         v-bind:quantity="ingredient.qty"
         v-bind:type="ingredient.type"
         :bpercent="0"
+        class="ingredient-row"
       ></Ingredient>
-      <span class="white-cta" id="add-ing-button">+ Add Ingredient</span>
+      <span class="" id="add-ing-button">+ Add Ingredient</span>
     </div>
   </div>
 </template>
@@ -33,6 +33,10 @@ export default {
 </script>
 
 <style scoped>
+#add-ing-button {
+  margin-top: 1rem;
+}
+
 .ingredient-list {
   display: flex;
   flex-direction: column;
@@ -52,5 +56,18 @@ export default {
   align-items: flex-end;
   margin-bottom: 0.5rem;
   max-width: 20rem;
+}
+
+.ingredient-row {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.ingredient-row:first-child {
+  border-top: 1px solid #c4c4c4;
 }
 </style>
