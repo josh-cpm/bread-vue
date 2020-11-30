@@ -6,12 +6,19 @@
       :value="name"
     ></TextInput>
     <span class="ingredient-row-sub-flex">
-      <input class="ingredient-quantity" :value="Math.round(quantity)" />
-      g
+      <input
+        class="ingredient-quantity"
+        type="number"
+        :value="Math.round(quantity)"
+      />
+      <span class="label black">
+        g
+      </span>
       <input
         class="ingredient-percent "
         :value="Math.round(bpercent * 100)"
-      /><span class="gray-text">%</span>
+        type="number"
+      /><span class="label gray">%</span>
     </span>
   </div>
 </template>
@@ -46,6 +53,7 @@ input {
   border: none;
   font-size: 1rem;
   padding: 0.3;
+  margin: 0 0.1rem 0 0.3rem;
 }
 
 input::placeholder {
@@ -72,10 +80,15 @@ input::placeholder {
   color: #6f6f6f;
   text-align: right;
   width: 4ch;
-  margin-right: 0.1rem;
 }
 
-.gray-text {
+.gray {
   color: #6f6f6f;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>
