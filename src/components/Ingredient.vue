@@ -4,6 +4,7 @@
       <TextInput
         class="ingredient-name"
         @input="logger"
+        @focus="toggleEditor('open')"
         :value="name"
       ></TextInput>
       <span class="ingredient-row-sub-flex">
@@ -11,6 +12,7 @@
           class="ingredient-quantity"
           type="number"
           :value="Math.round(quantity)"
+          @focus="toggleEditor('open')"
         />
         <span class="label black">
           g
@@ -19,6 +21,7 @@
           class="ingredient-percent "
           :value="Math.round(bpercent * 100)"
           type="number"
+          @focus="toggleEditor('open')"
         /><span class="label gray">%</span>
       </span>
     </div>
@@ -42,7 +45,7 @@
       </div>
       <div class="ingredient-editor-buttons">
         <button class="delete-ingredient-button">Delete Ingredient</button>
-        <button class="close-editor-button">Done</button>
+        <button @click="toggleEditor" class="close-editor-button">Done</button>
       </div>
     </div>
   </div>
@@ -59,12 +62,18 @@ export default {
   },
   data() {
     return {
-      editing: true,
+      editing: false,
     };
   },
   methods: {
-    toggleEditor() {
-      this.editing ? (this.editing = false) : (this.editing = true);
+    toggleEditor(directive) {
+      if (directive === 'open') {
+        this.editing = true;
+      } else if (directive === 'close') {
+        this.editing = false;
+      } else {
+        this.editing ? (this.editing = false) : (this.editing = true);
+      }
     },
     logger() {
       console.log('hi');
