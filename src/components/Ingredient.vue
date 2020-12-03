@@ -31,7 +31,11 @@
         <option value="other">Other</option>
       </select>
       <div class="ingredient-editor-hint">
-        <img src="info-icon.svg" alt="Ingredient info icon" />
+        <img
+          class="ingredient-editor-tiptext-icon"
+          src="info-icon.svg"
+          alt="Ingredient info icon"
+        />
         <span class="ingredient-editor-tiptext"
           >Changing the ingredient amount will not scale any other ingredients.
         </span>
