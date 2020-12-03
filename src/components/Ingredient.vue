@@ -30,6 +30,12 @@
         <option value="salt">Salt</option>
         <option value="other">Other</option>
       </select>
+      <div class="ingredient-editor-hint">
+        <span>O</span
+        ><span class="ingredient-editor-tiptext"
+          >Changing the ingredient amount will not scale any other ingredients.
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -121,5 +127,18 @@ input[type='number']::-webkit-outer-spin-button {
   border-bottom: 1px solid black;
   font-size: 1rem;
   margin-bottom: 1rem;
+}
+
+.ingredient-editor-hint {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ingredient-editor-tiptext {
+  font-size: 0.7rem;
+  color: #7e8c79;
+  margin-left: 1rem;
 }
 </style>
