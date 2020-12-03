@@ -8,6 +8,7 @@
             toggleEditor('open');
             setUnderline();
             toggleFocus($event);
+            setSelectedField('name');
           "
           @blur="toggleFocus"
           :value="name"
@@ -23,6 +24,7 @@
               toggleEditor('open');
               setUnderline();
               toggleFocus($event);
+              setSelectedField('qty');
             "
             @blur="toggleFocus"
           />
@@ -39,6 +41,7 @@
               toggleEditor('open');
               setUnderline();
               toggleFocus($event);
+              setSelectedField('bpct');
             "
             @blur="toggleFocus"
           /><span class="label gray">%</span>
@@ -46,23 +49,18 @@
       </span>
     </div>
     <div v-if="editing" class="ingredient-editor">
-      <select name="ingredient-type-selector" class="ingredient-type-selector">
+      <select
+        @focus="setSelectedField('type')"
+        name="ingredient-type-selector"
+        class="ingredient-type-selector"
+      >
         <option value="flour">Flour</option>
         <option value="liquid">Liquid</option>
         <option value="yeast">Yeast</option>
         <option value="salt">Salt</option>
         <option value="other">Other</option>
       </select>
-      <div class="ingredient-editor-hint">
-        <img
-          class="ingredient-editor-tiptext-icon"
-          src="info-icon.svg"
-          alt="Ingredient info icon"
-        />
-        <span class="ingredient-editor-tiptext"
-          >Changing the ingredient amount will not scale any other ingredients.
-        </span>
-      </div>
+      <IngredientHint :selectedField="selectedField"></IngredientHint>
       <div class="ingredient-editor-buttons">
         <button class="delete-ingredient-button">Delete Ingredient</button>
         <button
@@ -80,11 +78,11 @@
 </template>
 
 <script>
-// import InputWithUnderline from './InputWithUnderline';
+import IngredientHint from './IngredientHint';
 
 export default {
   name: 'Ingredient',
-  // components: { InputWithUnderline },
+  components: { IngredientHint },
   props: {
     name: String,
     quantity: Number,
@@ -94,6 +92,7 @@ export default {
   data() {
     return {
       editing: false,
+      selectedField: '',
     };
   },
   methods: {
@@ -119,6 +118,9 @@ export default {
     },
     toggleFocus(e) {
       e.target.parentNode.classList.toggle('gold-underline');
+    },
+    setSelectedField(field) {
+      this.selectedField = field;
     },
   },
 };
@@ -213,19 +215,6 @@ select:focus,
   font-size: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
-}
-
-.ingredient-editor-hint {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.ingredient-editor-tiptext {
-  font-size: 0.7rem;
-  color: #7e8c79;
-  margin-left: 0.5rem;
 }
 
 .ingredient-editor-buttons {
