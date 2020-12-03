@@ -1,25 +1,30 @@
 <template>
-  <div class="ingredient-row">
-    <TextInput
-      class="ingredient-name"
-      @input="logger"
-      :value="name"
-    ></TextInput>
-    <span class="ingredient-row-sub-flex">
-      <input
-        class="ingredient-quantity"
-        type="number"
-        :value="Math.round(quantity)"
-      />
-      <span class="label black">
-        g
+  <div class="ingredient">
+    <div class="ingredient-row">
+      <TextInput
+        class="ingredient-name"
+        @input="logger"
+        :value="name"
+      ></TextInput>
+      <span class="ingredient-row-sub-flex">
+        <input
+          class="ingredient-quantity"
+          type="number"
+          :value="Math.round(quantity)"
+        />
+        <span class="label black">
+          g
+        </span>
+        <input
+          class="ingredient-percent "
+          :value="Math.round(bpercent * 100)"
+          type="number"
+        /><span class="label gray">%</span>
       </span>
-      <input
-        class="ingredient-percent "
-        :value="Math.round(bpercent * 100)"
-        type="number"
-      /><span class="label gray">%</span>
-    </span>
+    </div>
+    <div v-if="editing" class="ingredient-editor">
+      editing!
+    </div>
   </div>
 </template>
 
@@ -59,6 +64,18 @@ input {
 input::placeholder {
   font-style: normal;
   font-family: Roboto;
+}
+
+.ingredient {
+  border-top: 1px solid #c4c4c4;
+}
+
+.ingredient-row {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .ingredient-row-sub-flex {

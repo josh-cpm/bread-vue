@@ -11,7 +11,6 @@
         v-bind:quantity="ingredient.qty"
         v-bind:type="ingredient.type"
         :bpercent="0"
-        class="ingredient-row"
       ></Ingredient>
       <span class="" id="add-ing-button">+ Add Ingredient</span>
     </div>
@@ -56,18 +55,5 @@ export default {
   align-items: flex-end;
   margin-bottom: 0.5rem;
   max-width: 20rem;
-}
-
-.ingredient-row {
-  padding: 0.5rem 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #c4c4c4;
-}
-
-.ingredient-row:first-child {
-  border-top: 1px solid #c4c4c4;
 }
 </style>
