@@ -23,7 +23,13 @@
       </span>
     </div>
     <div v-if="editing" class="ingredient-editor">
-      editing!
+      <select name="ingredient-type-selector" class="ingredient-type-selector">
+        <option value="flour">Flour</option>
+        <option value="liquid">Liquid</option>
+        <option value="yeast">Yeast</option>
+        <option value="salt">Salt</option>
+        <option value="other">Other</option>
+      </select>
     </div>
   </div>
 </template>
@@ -39,7 +45,7 @@ export default {
   },
   data() {
     return {
-      editing: false,
+      editing: true,
     };
   },
   methods: {
@@ -66,12 +72,19 @@ input::placeholder {
   font-family: Roboto;
 }
 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .ingredient {
   border-top: 1px solid #c4c4c4;
 }
 
 .ingredient-row {
-  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -103,9 +116,10 @@ input::placeholder {
   color: #6f6f6f;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.ingredient-type-selector {
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 </style>
