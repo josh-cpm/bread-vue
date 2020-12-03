@@ -1,30 +1,46 @@
 <template>
   <div class="ingredient">
     <div class="ingredient-row">
-      <TextInput
-        class="ingredient-name"
-        @input="logger"
-        @focus="toggleEditor('open')"
-        :value="name"
-      ></TextInput>
+      <span ref="ingredientName">
+        <TextInput
+          class="ingredient-name"
+          @focus="
+            toggleEditor('open');
+            setUnderline();
+            toggleFocus($event);
+          "
+          @blur="toggleFocus"
+          :value="name"
+        ></TextInput>
+      </span>
       <span class="ingredient-row-sub-flex">
-        <span class="ingredient-row-sub-sub-flex">
+        <span ref="ingredientQuantity" class="ingredient-row-sub-sub-flex">
           <input
             class="ingredient-quantity"
             type="number"
             :value="Math.round(quantity)"
-            @focus="toggleEditor('open')"
+            @focus="
+              toggleEditor('open');
+              setUnderline();
+              toggleFocus($event);
+            "
+            @blur="toggleFocus"
           />
           <span class="label black">
             g
           </span>
         </span>
-        <span class="ingredient-row-sub-sub-flex">
+        <span ref="ingredientBPercent" class="ingredient-row-sub-sub-flex">
           <input
             class="ingredient-percent "
             :value="Math.round(bpercent * 100)"
             type="number"
-            @focus="toggleEditor('open')"
+            @focus="
+              toggleEditor('open');
+              setUnderline();
+              toggleFocus($event);
+            "
+            @blur="toggleFocus"
           /><span class="label gray">%</span>
         </span>
       </span>
@@ -49,15 +65,26 @@
       </div>
       <div class="ingredient-editor-buttons">
         <button class="delete-ingredient-button">Delete Ingredient</button>
-        <button @click="toggleEditor" class="close-editor-button">Done</button>
+        <button
+          @click="
+            toggleEditor();
+            setUnderline();
+          "
+          class="close-editor-button"
+        >
+          Done
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+// import InputWithUnderline from './InputWithUnderline';
+
 export default {
   name: 'Ingredient',
+  // components: { InputWithUnderline },
   props: {
     name: String,
     quantity: Number,
@@ -79,8 +106,19 @@ export default {
         this.editing ? (this.editing = false) : (this.editing = true);
       }
     },
-    logger() {
-      console.log('hi');
+    setUnderline() {
+      if (this.editing === true) {
+        this.$refs.ingredientBPercent.classList.add('underline');
+        this.$refs.ingredientQuantity.classList.add('underline');
+        this.$refs.ingredientName.classList.add('underline');
+      } else {
+        this.$refs.ingredientBPercent.classList.remove('underline');
+        this.$refs.ingredientQuantity.classList.remove('underline');
+        this.$refs.ingredientName.classList.remove('underline');
+      }
+    },
+    toggleFocus(e) {
+      e.target.parentNode.classList.toggle('gold-underline');
     },
   },
 };
@@ -125,7 +163,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 .ingredient-row-sub-sub-flex {
   display: flex;
-  border-bottom: 1px solid black;
   margin-left: 1rem;
 }
 
@@ -137,7 +174,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 .ingredient-name {
   margin-right: 1em;
-  border-bottom: 1px solid #666666;
 }
 
 .ingredient-percent {
@@ -146,14 +182,21 @@ input[type='number']::-webkit-outer-spin-button {
   width: 4.5ch;
 }
 
-.ingredient-name:focus {
-  border-bottom: 2px solid #b59a5b;
-}
-
+select,
 .ingredient-percent:focus,
 .ingredient-name:focus,
 .ingredient-quantity:focus {
   outline: none;
+}
+
+.underline {
+  border-bottom: 1px solid #666666;
+}
+
+select:focus,
+.gold-underline {
+  box-shadow: 0 2px 0px 0px #b59a5b;
+  border-bottom: 1px solid #b59a5b;
 }
 
 .label {
@@ -197,6 +240,7 @@ input[type='number']::-webkit-outer-spin-button {
   color: #791d34;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .close-editor-button {
@@ -205,5 +249,6 @@ input[type='number']::-webkit-outer-spin-button {
   border: none;
   color: white;
   padding: 0.3em 0.5em;
+  cursor: pointer;
 }
 </style>
