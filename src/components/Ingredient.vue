@@ -12,6 +12,7 @@
           "
           @blur="toggleFocus"
           :value="name"
+          @input="$emit('update:name', $event.target.value)"
         ></TextInput>
       </span>
       <span class="ingredient-row-sub-flex">
@@ -27,6 +28,7 @@
               setSelectedField('qty');
             "
             @blur="toggleFocus"
+            @input="$emit('update:quantity', parseInt($event.target.value))"
           />
           <span class="label black">
             g
@@ -50,11 +52,14 @@
     </div>
     <div v-if="editing" class="ingredient-editor">
       <select name="ingredient-type-selector" class="ingredient-type-selector">
-        <option value="flour">Flour</option>
-        <option value="liquid">Liquid</option>
-        <option value="yeast">Yeast</option>
-        <option value="salt">Salt</option>
-        <option value="other">Other</option>
+        <option value="none">Select Ingredient Type</option>
+        <option value="flour" :selected="selectedOption('flour')">Flour</option>
+        <option :selected="selectedOption('liquid')" value="liquid"
+          >Liquid</option
+        >
+        <option value="yeast" :selected="selectedOption('yeast')">Yeast</option>
+        <option value="salt" :selected="selectedOption('salt')">Salt</option>
+        <option value="other" :selected="selectedOption('other')">Other</option>
       </select>
       <IngredientHint :selectedField="selectedField"></IngredientHint>
       <div class="ingredient-editor-buttons">
@@ -117,6 +122,12 @@ export default {
     },
     setSelectedField(field) {
       this.selectedField = field;
+    },
+    selectedOption(fieldType) {
+      if (fieldType === this.type) {
+        return true;
+      }
+      return false;
     },
   },
 };

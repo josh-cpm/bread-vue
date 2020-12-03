@@ -7,9 +7,9 @@
       <Ingredient
         v-for="ingredient in ingredients"
         :key="ingredient.title"
-        v-bind:name="ingredient.name"
-        v-bind:quantity="ingredient.qty"
-        v-bind:type="ingredient.type"
+        v-model:name="ingredient.name"
+        v-model:quantity="ingredient.qty"
+        v-model:type="ingredient.type"
         :bpercent="0"
       ></Ingredient>
       <span class="" id="add-ing-button">+ Add Ingredient</span>
