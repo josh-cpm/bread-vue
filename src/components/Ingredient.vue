@@ -31,8 +31,8 @@
         <option value="other">Other</option>
       </select>
       <div class="ingredient-editor-hint">
-        <span>O</span
-        ><span class="ingredient-editor-tiptext"
+        <img src="info-icon.svg" alt="Ingredient info icon" />
+        <span class="ingredient-editor-tiptext"
           >Changing the ingredient amount will not scale any other ingredients.
         </span>
       </div>
@@ -139,6 +139,6 @@ input[type='number']::-webkit-outer-spin-button {
 .ingredient-editor-tiptext {
   font-size: 0.7rem;
   color: #7e8c79;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 </style>
