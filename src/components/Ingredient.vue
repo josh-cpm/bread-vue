@@ -40,6 +40,10 @@
           >Changing the ingredient amount will not scale any other ingredients.
         </span>
       </div>
+      <div class="ingredient-editor-buttons">
+        <button class="delete-ingredient-button">Delete Ingredient</button>
+        <button class="close-editor-button">Done</button>
+      </div>
     </div>
   </div>
 </template>
@@ -94,7 +98,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 .ingredient-row {
   margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -130,6 +134,7 @@ input[type='number']::-webkit-outer-spin-button {
   border: none;
   border-bottom: 1px solid black;
   font-size: 1rem;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
 
@@ -144,5 +149,27 @@ input[type='number']::-webkit-outer-spin-button {
   font-size: 0.7rem;
   color: #7e8c79;
   margin-left: 0.5rem;
+}
+
+.ingredient-editor-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.delete-ingredient-button {
+  font-size: 1rem;
+  color: #791d34;
+  background-color: transparent;
+  border: none;
+}
+
+.close-editor-button {
+  font-size: 1rem;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 0.3em 0.5em;
 }
 </style>
