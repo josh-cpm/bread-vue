@@ -8,21 +8,25 @@
         :value="name"
       ></TextInput>
       <span class="ingredient-row-sub-flex">
-        <input
-          class="ingredient-quantity"
-          type="number"
-          :value="Math.round(quantity)"
-          @focus="toggleEditor('open')"
-        />
-        <span class="label black">
-          g
+        <span class="ingredient-row-sub-sub-flex">
+          <input
+            class="ingredient-quantity"
+            type="number"
+            :value="Math.round(quantity)"
+            @focus="toggleEditor('open')"
+          />
+          <span class="label black">
+            g
+          </span>
         </span>
-        <input
-          class="ingredient-percent "
-          :value="Math.round(bpercent * 100)"
-          type="number"
-          @focus="toggleEditor('open')"
-        /><span class="label gray">%</span>
+        <span class="ingredient-row-sub-sub-flex">
+          <input
+            class="ingredient-percent "
+            :value="Math.round(bpercent * 100)"
+            type="number"
+            @focus="toggleEditor('open')"
+          /><span class="label gray">%</span>
+        </span>
       </span>
     </div>
     <div v-if="editing" class="ingredient-editor">
@@ -86,8 +90,8 @@ export default {
 input {
   border: none;
   font-size: 1rem;
-  padding: 0.3;
-  margin: 0 0.1rem 0 0.3rem;
+  padding: 0.3rem;
+  /* margin: 0 0.1rem 0 0.3rem; */
 }
 
 input::placeholder {
@@ -119,20 +123,41 @@ input[type='number']::-webkit-outer-spin-button {
   flex-direction: row;
 }
 
+.ingredient-row-sub-sub-flex {
+  display: flex;
+  border-bottom: 1px solid black;
+  margin-left: 1rem;
+}
+
 .ingredient-quantity {
   margin-right: 0.1rem;
   text-align: right;
-  width: 7ch;
+  width: 5ch;
 }
 
 .ingredient-name {
   margin-right: 1em;
+  border-bottom: 1px solid #666666;
 }
 
 .ingredient-percent {
   color: #6f6f6f;
   text-align: right;
-  width: 4ch;
+  width: 4.5ch;
+}
+
+.ingredient-name:focus {
+  border-bottom: 2px solid #b59a5b;
+}
+
+.ingredient-percent:focus,
+.ingredient-name:focus,
+.ingredient-quantity:focus {
+  outline: none;
+}
+
+.label {
+  padding: 0.3rem 0;
 }
 
 .gray {
