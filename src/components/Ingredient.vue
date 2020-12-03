@@ -49,11 +49,7 @@
       </span>
     </div>
     <div v-if="editing" class="ingredient-editor">
-      <select
-        @focus="setSelectedField('type')"
-        name="ingredient-type-selector"
-        class="ingredient-type-selector"
-      >
+      <select name="ingredient-type-selector" class="ingredient-type-selector">
         <option value="flour">Flour</option>
         <option value="liquid">Liquid</option>
         <option value="yeast">Yeast</option>
