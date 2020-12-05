@@ -63,7 +63,12 @@
       </select>
       <IngredientHint :selectedField="selectedField"></IngredientHint>
       <div class="ingredient-editor-buttons">
-        <button class="delete-ingredient-button">Delete Ingredient</button>
+        <button
+          class="delete-ingredient-button"
+          @click="$emit('delete-ingredient', ingredient)"
+        >
+          Delete Ingredient
+        </button>
         <button
           @click="
             toggleEditor();
@@ -89,6 +94,7 @@ export default {
     quantity: Number,
     type: String,
     bpercent: Number,
+    index: Number,
   },
   data() {
     return {

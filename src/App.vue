@@ -6,7 +6,7 @@
   <div class="spacer"></div>
   <Summary></Summary>
   <div class="spacer"></div>
-  <Ingredients :ingredients="ingredients"></Ingredients>
+  <Ingredients :ingredientsList="ingredients"></Ingredients>
   <div class="spacer"></div>
   <Method :steps="steps"></Method>
 </template>

@@ -5,12 +5,14 @@
     </div>
     <div class="ingredient-list">
       <Ingredient
-        v-for="ingredient in ingredients"
+        v-for="(ingredient, index) in ingredients"
         :key="ingredient.title"
+        :bpercent="0"
+        :index="index"
         v-model:name="ingredient.name"
         v-model:quantity="ingredient.qty"
         v-model:type="ingredient.type"
-        :bpercent="0"
+        @delete-ingredient="deleteIngredient"
       ></Ingredient>
       <span class="" id="add-ing-button">+ Add Ingredient</span>
     </div>
@@ -26,7 +28,17 @@ export default {
     Ingredient,
   },
   props: {
-    ingredients: Array,
+    ingredientsList: Array,
+  },
+  data() {
+    return {
+      ingredients: this.ingredientsList,
+    };
+  },
+  methods: {
+    deleteIngredient(index) {
+      this.ingredients.splice(index, 1);
+    },
   },
 };
 </script>
