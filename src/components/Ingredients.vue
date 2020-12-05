@@ -7,7 +7,7 @@
       <Ingredient
         v-for="(ingredient, index) in ingredients"
         :key="ingredient.title"
-        :bpercent="0"
+        :bpercent="ingredient.qty / totalFlour"
         :index="index"
         v-model:name="ingredient.name"
         v-model:quantity="ingredient.qty"
@@ -29,6 +29,17 @@ export default {
   },
   props: {
     ingredients: Array,
+  },
+  computed: {
+    totalFlour() {
+      let flour = 0;
+      this.ingredients.forEach((e) => {
+        if (e.type === 'flour') {
+          flour += e.qty;
+        }
+      });
+      return flour;
+    },
   },
 };
 </script>
