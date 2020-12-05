@@ -4,6 +4,13 @@
     <span class="tiptext">Tap to edit</span>
   </div>
   <div class="summary-control-row">
+    <EditableButton
+      :name="this.$options.name"
+      :buttonValue="numLoaves"
+      :label="`Loaves`"
+      @inputText="updateLoafNum"
+    >
+    </EditableButton>
     <span class="summary-loaf-num white-cta">{{ numLoaves }} loaf</span>
     <span class="summary-loaf-mass white-cta">{{ loafMass }}g</span>
     <span class="summary-loaf-hydration white-cta"
@@ -23,6 +30,11 @@ export default {
     hydration: Number,
     loafMass: Number,
     numLoaves: Number,
+  },
+  methods: {
+    updateLoafNum(num) {
+      this.$emit('update:numLoaves', parseInt(num));
+    },
   },
 };
 </script>

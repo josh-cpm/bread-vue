@@ -5,7 +5,7 @@
   ></Header>
   <div class="spacer"></div>
   <Summary
-    :numLoaves="numLoaves"
+    v-model:numLoaves="numLoaves"
     :hydration="hydration"
     :loafMass="loafMass"
   ></Summary>
