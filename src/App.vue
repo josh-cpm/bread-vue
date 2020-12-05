@@ -8,6 +8,7 @@
   <div class="spacer"></div>
   <Ingredients
     :ingredients="ingredientsWithKey"
+    :totalFlour="totalFlour"
     @delete-ingredient="deleteIngredient"
   ></Ingredients>
   <div class="spacer"></div>
@@ -42,6 +43,15 @@ export default {
       let ing = this.ingredients;
       ing.forEach((e) => (e.randomKey = Math.random()));
       return ing;
+    },
+    totalFlour() {
+      let flour = 0;
+      this.ingredients.forEach((e) => {
+        if (e.type === 'flour') {
+          flour += e.qty;
+        }
+      });
+      return flour;
     },
   },
   methods: {

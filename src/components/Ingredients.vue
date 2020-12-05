@@ -29,18 +29,9 @@ export default {
   },
   props: {
     ingredients: Array,
+    totalFlour: Number,
   },
-  computed: {
-    totalFlour() {
-      let flour = 0;
-      this.ingredients.forEach((e) => {
-        if (e.type === 'flour') {
-          flour += e.qty;
-        }
-      });
-      return flour;
-    },
-  },
+
   methods: {
     logger(e) {
       console.log(e);
