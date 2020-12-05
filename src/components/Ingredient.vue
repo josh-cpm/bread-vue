@@ -51,7 +51,11 @@
       </span>
     </div>
     <div v-if="editing" class="ingredient-editor">
-      <select name="ingredient-type-selector" class="ingredient-type-selector">
+      <select
+        @input="$emit('update:type', $event.target.value)"
+        name="ingredient-type-selector"
+        class="ingredient-type-selector"
+      >
         <option value="none">Select Ingredient Type</option>
         <option value="flour" :selected="selectedOption('flour')">Flour</option>
         <option :selected="selectedOption('liquid')" value="liquid"
@@ -103,6 +107,9 @@ export default {
     };
   },
   methods: {
+    logger(e) {
+      console.log(e);
+    },
     toggleEditor(directive) {
       if (directive === 'open') {
         this.editing = true;
