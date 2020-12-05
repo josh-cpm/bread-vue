@@ -51,7 +51,11 @@
       </span>
     </div>
     <div v-if="editing" class="ingredient-editor">
-      <select name="ingredient-type-selector" class="ingredient-type-selector">
+      <select
+        @input="$emit('update:type', $event.target.value)"
+        name="ingredient-type-selector"
+        class="ingredient-type-selector"
+      >
         <option value="none">Select Ingredient Type</option>
         <option value="flour" :selected="selectedOption('flour')">Flour</option>
         <option :selected="selectedOption('liquid')" value="liquid"
@@ -63,7 +67,12 @@
       </select>
       <IngredientHint :selectedField="selectedField"></IngredientHint>
       <div class="ingredient-editor-buttons">
-        <button class="delete-ingredient-button">Delete Ingredient</button>
+        <button
+          class="delete-ingredient-button"
+          @click="$emit('delete-ingredient', index)"
+        >
+          Delete Ingredient
+        </button>
         <button
           @click="
             toggleEditor();
@@ -89,6 +98,7 @@ export default {
     quantity: Number,
     type: String,
     bpercent: Number,
+    index: Number,
   },
   data() {
     return {
@@ -97,6 +107,9 @@ export default {
     };
   },
   methods: {
+    logger(e) {
+      console.log(e);
+    },
     toggleEditor(directive) {
       if (directive === 'open') {
         this.editing = true;

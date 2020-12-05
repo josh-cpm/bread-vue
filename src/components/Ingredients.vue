@@ -5,12 +5,14 @@
     </div>
     <div class="ingredient-list">
       <Ingredient
-        v-for="ingredient in ingredients"
-        :key="ingredient.title"
+        v-for="(ingredient, index) in ingredients"
+        :key="ingredient.randomKey"
+        :bpercent="ingredient.qty / totalFlour"
+        :index="index"
         v-model:name="ingredient.name"
         v-model:quantity="ingredient.qty"
         v-model:type="ingredient.type"
-        :bpercent="0"
+        @delete-ingredient="$emit('delete-ingredient', index)"
       ></Ingredient>
       <span class="" id="add-ing-button">+ Add Ingredient</span>
     </div>
@@ -27,6 +29,16 @@ export default {
   },
   props: {
     ingredients: Array,
+    totalFlour: Number,
+  },
+
+  methods: {
+    logger(e) {
+      console.log(e);
+    },
+  },
+  created() {
+    console.log(this.ingredients);
   },
 };
 </script>

@@ -6,7 +6,11 @@
   <div class="spacer"></div>
   <Summary></Summary>
   <div class="spacer"></div>
-  <Ingredients :ingredients="ingredients"></Ingredients>
+  <Ingredients
+    :ingredients="ingredientsWithKey"
+    :totalFlour="totalFlour"
+    @delete-ingredient="deleteIngredient"
+  ></Ingredients>
   <div class="spacer"></div>
   <Method :steps="steps"></Method>
 </template>
@@ -30,9 +34,34 @@ export default {
     return {
       recipeTitle: recipe.recipeInfo.title,
       recipeDescription: recipe.recipeInfo.description,
-      ingredients: recipe.ingredients,
       steps: recipe.steps,
+      ingredients: recipe.ingredients,
     };
+  },
+  computed: {
+    ingredientsWithKey() {
+      let ing = this.ingredients;
+      ing.forEach((e) => (e.randomKey = Math.random()));
+      return ing;
+    },
+    totalFlour() {
+      let flour = 0;
+      this.ingredients.forEach((e) => {
+        if (e.type === 'flour') {
+          flour += e.qty;
+        }
+      });
+      return flour;
+    },
+  },
+  methods: {
+    deleteIngredient(index) {
+      console.log(index);
+      this.ingredients.splice(index, 1);
+    },
+    logger(e) {
+      console.log(e);
+    },
   },
 };
 </script>
