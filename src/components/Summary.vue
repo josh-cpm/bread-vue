@@ -4,9 +4,11 @@
     <span class="tiptext">Tap to edit</span>
   </div>
   <div class="summary-control-row">
-    <span class="summary-loaf-num white-cta">1 loaf</span>
-    <span class="summary-loaf-mass white-cta">800g</span>
-    <span class="summary-loaf-hydration white-cta">80% hydration</span>
+    <span class="summary-loaf-num white-cta">{{ numLoaves }} loaf</span>
+    <span class="summary-loaf-mass white-cta">{{ loafMass }}g</span>
+    <span class="summary-loaf-hydration white-cta"
+      >{{ Math.round(hydration * 100) }}% hydration</span
+    >
   </div>
   <div class="dough-summary-stats">
     <span class="end-hydration-label">End hydration 82%</span>
@@ -17,6 +19,11 @@
 <script>
 export default {
   name: 'Summary',
+  props: {
+    hydration: Number,
+    loafMass: Number,
+    numLoaves: Number,
+  },
 };
 </script>
 

@@ -4,7 +4,11 @@
     :recipeDescription="recipeDescription"
   ></Header>
   <div class="spacer"></div>
-  <Summary></Summary>
+  <Summary
+    :numLoaves="numLoaves"
+    :hydration="hydration"
+    :loafMass="loafMass"
+  ></Summary>
   <div class="spacer"></div>
   <Ingredients
     :ingredients="ingredientsWithKey"
@@ -36,6 +40,7 @@ export default {
       recipeDescription: recipe.recipeInfo.description,
       steps: recipe.steps,
       ingredients: recipe.ingredients,
+      numLoaves: 1,
     };
   },
   computed: {
@@ -44,14 +49,19 @@ export default {
       ing.forEach((e) => (e.randomKey = Math.random()));
       return ing;
     },
+    hydration() {
+      const totalLiquid = this.ingredients
+        .filter((e) => e.type === 'liquid')
+        .reduce((acc, cur) => acc + cur.qty, 0);
+      return totalLiquid / this.totalFlour;
+    },
     totalFlour() {
-      let flour = 0;
-      this.ingredients.forEach((e) => {
-        if (e.type === 'flour') {
-          flour += e.qty;
-        }
-      });
-      return flour;
+      return this.ingredients
+        .filter((e) => e.type === 'flour')
+        .reduce((acc, cur) => acc + cur.qty, 0);
+    },
+    loafMass() {
+      return this.ingredients.reduce((acc, cur) => acc + cur.qty, 0);
     },
   },
   methods: {
