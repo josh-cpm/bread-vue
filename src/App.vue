@@ -6,7 +6,10 @@
   <div class="spacer"></div>
   <Summary></Summary>
   <div class="spacer"></div>
-  <Ingredients :ingredientsList="ingredients"></Ingredients>
+  <Ingredients
+    :ingredients="ingredients"
+    @delete-ingredient="deleteIngredient"
+  ></Ingredients>
   <div class="spacer"></div>
   <Method :steps="steps"></Method>
 </template>
@@ -33,6 +36,11 @@ export default {
       ingredients: recipe.ingredients,
       steps: recipe.steps,
     };
+  },
+  methods: {
+    deleteIngredient(index) {
+      this.ingredients.splice(index, 1);
+    },
   },
 };
 </script>

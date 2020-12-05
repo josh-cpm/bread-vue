@@ -12,7 +12,7 @@
         v-model:name="ingredient.name"
         v-model:quantity="ingredient.qty"
         v-model:type="ingredient.type"
-        @delete-ingredient="deleteIngredient"
+        @delete-ingredient="$emit('delete-ingredient', ingredient)"
       ></Ingredient>
       <span class="" id="add-ing-button">+ Add Ingredient</span>
     </div>
@@ -28,17 +28,7 @@ export default {
     Ingredient,
   },
   props: {
-    ingredientsList: Array,
-  },
-  data() {
-    return {
-      ingredients: this.ingredientsList,
-    };
-  },
-  methods: {
-    deleteIngredient(index) {
-      this.ingredients.splice(index, 1);
-    },
+    ingredients: Array,
   },
 };
 </script>
