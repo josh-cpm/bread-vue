@@ -6,13 +6,13 @@
     <div class="ingredient-list">
       <Ingredient
         v-for="(ingredient, index) in ingredients"
-        :key="ingredient.title"
+        :key="ingredient.randomKey"
         :bpercent="ingredient.qty / totalFlour"
         :index="index"
         v-model:name="ingredient.name"
         v-model:quantity="ingredient.qty"
         v-model:type="ingredient.type"
-        @delete-ingredient="$emit('delete-ingredient', ingredient)"
+        @delete-ingredient="$emit('delete-ingredient', index)"
       ></Ingredient>
       <span class="" id="add-ing-button">+ Add Ingredient</span>
     </div>
@@ -40,6 +40,14 @@ export default {
       });
       return flour;
     },
+  },
+  methods: {
+    logger(e) {
+      console.log(e);
+    },
+  },
+  created() {
+    console.log(this.ingredients);
   },
 };
 </script>

@@ -7,7 +7,7 @@
   <Summary></Summary>
   <div class="spacer"></div>
   <Ingredients
-    :ingredients="ingredients"
+    :ingredients="ingredientsWithKey"
     @delete-ingredient="deleteIngredient"
   ></Ingredients>
   <div class="spacer"></div>
@@ -33,13 +33,24 @@ export default {
     return {
       recipeTitle: recipe.recipeInfo.title,
       recipeDescription: recipe.recipeInfo.description,
-      ingredients: recipe.ingredients,
       steps: recipe.steps,
+      ingredients: recipe.ingredients,
     };
+  },
+  computed: {
+    ingredientsWithKey() {
+      let ing = this.ingredients;
+      ing.forEach((e) => (e.randomKey = Math.random()));
+      return ing;
+    },
   },
   methods: {
     deleteIngredient(index) {
+      console.log(index);
       this.ingredients.splice(index, 1);
+    },
+    logger(e) {
+      console.log(e);
     },
   },
 };

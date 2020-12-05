@@ -65,7 +65,7 @@
       <div class="ingredient-editor-buttons">
         <button
           class="delete-ingredient-button"
-          @click="$emit('delete-ingredient', ingredient)"
+          @click="$emit('delete-ingredient', index)"
         >
           Delete Ingredient
         </button>
