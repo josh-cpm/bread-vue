@@ -16,7 +16,7 @@
       :name="this.$options.name"
       :buttonValue="loafMass"
       :label="`Loaf Size`"
-      @inputText="logger"
+      @inputText="updateLoafMass"
       class="summary-loaf-mass"
     >
     </EditableButton>
@@ -33,7 +33,7 @@
 <script>
 export default {
   name: 'Summary',
-  emits: ['changeloafnum', 'update:numLoaves'],
+  emits: ['changeloafnum', 'update:numLoaves', 'changeloafmass'],
   props: {
     hydration: Number,
     loafMass: Number,
@@ -44,6 +44,11 @@ export default {
       if (num > 0) {
         this.$emit('changeloafnum', parseInt(num));
         this.$emit('update:numLoaves', parseInt(num));
+      }
+    },
+    updateLoafMass(mass) {
+      if (mass > 0) {
+        this.$emit('changeloafmass', parseInt(mass));
       }
     },
   },

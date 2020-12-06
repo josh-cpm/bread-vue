@@ -9,6 +9,7 @@
     :hydration="hydration"
     :loafMass="loafMass"
     @changeloafnum="changeLoafNum"
+    @changeloafmass="changeLoafMass"
   ></Summary>
   <div class="spacer"></div>
   <Ingredients
@@ -62,7 +63,9 @@ export default {
         .reduce((acc, cur) => acc + cur.qty, 0);
     },
     loafMass() {
-      return this.ingredients.reduce((acc, cur) => acc + cur.qty, 0);
+      return Math.round(
+        this.ingredients.reduce((acc, cur) => acc + cur.qty, 0)
+      );
     },
   },
   methods: {
@@ -72,6 +75,10 @@ export default {
     },
     changeLoafNum(newNumber) {
       const factor = newNumber / this.numLoaves;
+      this.ingredients.forEach((e) => (e.qty *= factor));
+    },
+    changeLoafMass(mass) {
+      const factor = mass / this.loafMass;
       this.ingredients.forEach((e) => (e.qty *= factor));
     },
     logger(e) {
