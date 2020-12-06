@@ -24,7 +24,7 @@
       :name="this.$options.name"
       :buttonValue="Math.round(hydration * 100) + '%'"
       :label="`Hydration`"
-      @inputText="updateHydration"
+      @inputText="updateLoafHydration"
       class="summary-loaf-hydration"
     >
     </EditableButton>
@@ -38,7 +38,12 @@
 <script>
 export default {
   name: 'Summary',
-  emits: ['changeloafnum', 'update:numLoaves', 'changeloafmass'],
+  emits: [
+    'changeloafnum',
+    'update:numLoaves',
+    'changeloafmass',
+    'changeloafhydration',
+  ],
   props: {
     hydration: Number,
     loafMass: Number,
@@ -55,6 +60,11 @@ export default {
     updateLoafMass(mass) {
       if (mass > 0) {
         this.$emit('changeloafmass', parseInt(mass));
+      }
+    },
+    updateLoafHydration(hydration) {
+      if (hydration > 0) {
+        this.$emit('changeloafhydration', parseInt(hydration));
       }
     },
   },

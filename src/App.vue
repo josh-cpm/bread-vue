@@ -11,6 +11,7 @@
     :doughMass="doughMass"
     @changeloafnum="changeLoafNum"
     @changeloafmass="changeLoafMass"
+    @changeloafhydration="changeLoafHydration"
   ></Summary>
   <div class="spacer"></div>
   <Ingredients
@@ -86,6 +87,12 @@ export default {
     changeLoafMass(mass) {
       const factor = mass / this.singleLoafMass;
       this.ingredients.forEach((e) => (e.qty *= factor));
+    },
+    changeLoafHydration(hydration) {
+      console.log(hydration);
+
+      // calculate water & flour change factors
+      // multiply water and flour ingredients by those factors
     },
     logger(e) {
       console.log(e);
