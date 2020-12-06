@@ -74,4 +74,9 @@ export default {
   color: #6f6f6f;
   margin-top: 0.7rem;
 }
+
+.summary-control-row {
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>
