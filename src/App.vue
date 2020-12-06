@@ -8,6 +8,7 @@
     v-model:numLoaves="numLoaves"
     :hydration="hydration"
     :loafMass="loafMass"
+    @changeloafnum="changeLoafNum"
   ></Summary>
   <div class="spacer"></div>
   <Ingredients
@@ -68,6 +69,10 @@ export default {
     deleteIngredient(index) {
       console.log(index);
       this.ingredients.splice(index, 1);
+    },
+    changeLoafNum(newNumber) {
+      const factor = newNumber / this.numLoaves;
+      this.ingredients.forEach((e) => (e.qty *= factor));
     },
     logger(e) {
       console.log(e);

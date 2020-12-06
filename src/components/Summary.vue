@@ -9,9 +9,9 @@
       :buttonValue="numLoaves"
       :label="`Loaves`"
       @inputText="updateLoafNum"
+      class="summary-loaf-num"
     >
     </EditableButton>
-    <span class="summary-loaf-num white-cta">{{ numLoaves }} loaf</span>
     <span class="summary-loaf-mass white-cta">{{ loafMass }}g</span>
     <span class="summary-loaf-hydration white-cta"
       >{{ Math.round(hydration * 100) }}% hydration</span
@@ -26,6 +26,7 @@
 <script>
 export default {
   name: 'Summary',
+  emits: ['changeloafnum', 'update:numLoaves'],
   props: {
     hydration: Number,
     loafMass: Number,
@@ -33,7 +34,10 @@ export default {
   },
   methods: {
     updateLoafNum(num) {
-      this.$emit('update:numLoaves', parseInt(num));
+      if (num > 0) {
+        this.$emit('changeloafnum', parseInt(num));
+        this.$emit('update:numLoaves', parseInt(num));
+      }
     },
   },
 };
