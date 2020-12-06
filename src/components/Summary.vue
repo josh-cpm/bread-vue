@@ -64,7 +64,7 @@ export default {
     },
     updateLoafHydration(hydration) {
       if (hydration > 0) {
-        this.$emit('changeloafhydration', parseInt(hydration));
+        this.$emit('changeloafhydration', parseInt(hydration) / 100);
       }
     },
   },

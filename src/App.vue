@@ -54,10 +54,12 @@ export default {
       return ing;
     },
     hydration() {
-      const totalLiquid = this.ingredients
+      return this.totalLiquid / this.totalFlour;
+    },
+    totalLiquid() {
+      return this.ingredients
         .filter((e) => e.type === 'liquid')
         .reduce((acc, cur) => acc + cur.qty, 0);
-      return totalLiquid / this.totalFlour;
     },
     totalFlour() {
       return this.ingredients
@@ -89,10 +91,16 @@ export default {
       this.ingredients.forEach((e) => (e.qty *= factor));
     },
     changeLoafHydration(hydration) {
-      console.log(hydration);
+      // Note, this changes bakers hydration ONLY. It leaves
+      const liquidAndFlour = this.totalLiquid + this.totalFlour;
+      const newTotalFlour = liquidAndFlour / (1 + hydration);
+      const flourFactor = newTotalFlour / this.totalFlour;
+      const liquidFactor = (liquidAndFlour - newTotalFlour) / this.totalLiquid;
 
-      // calculate water & flour change factors
-      // multiply water and flour ingredients by those factors
+      this.ingredients.forEach((e) => {
+        if (e.type === 'flour') e.qty *= flourFactor;
+        if (e.type === 'liquid') e.qty *= liquidFactor;
+      });
     },
     logger(e) {
       console.log(e);
