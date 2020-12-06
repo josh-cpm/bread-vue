@@ -7,7 +7,8 @@
   <Summary
     v-model:numLoaves="numLoaves"
     :hydration="hydration"
-    :loafMass="loafMass"
+    :loafMass="singleLoafMass"
+    :doughMass="doughMass"
     @changeloafnum="changeLoafNum"
     @changeloafmass="changeLoafMass"
   ></Summary>
@@ -62,7 +63,12 @@ export default {
         .filter((e) => e.type === 'flour')
         .reduce((acc, cur) => acc + cur.qty, 0);
     },
-    loafMass() {
+    singleLoafMass() {
+      return Math.round(
+        this.ingredients.reduce((acc, cur) => acc + cur.qty, 0) / this.numLoaves
+      );
+    },
+    doughMass() {
       return Math.round(
         this.ingredients.reduce((acc, cur) => acc + cur.qty, 0)
       );
@@ -78,7 +84,7 @@ export default {
       this.ingredients.forEach((e) => (e.qty *= factor));
     },
     changeLoafMass(mass) {
-      const factor = mass / this.loafMass;
+      const factor = mass / this.singleLoafMass;
       this.ingredients.forEach((e) => (e.qty *= factor));
     },
     logger(e) {

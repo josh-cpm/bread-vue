@@ -26,7 +26,7 @@
   </div>
   <div class="dough-summary-stats">
     <span class="end-hydration-label">End hydration 82%</span>
-    <span class="end-hydration-label"> • Total dough 1350g</span>
+    <span class="end-hydration-label"> • Total dough {{ doughMass }}g</span>
   </div>
 </template>
 
@@ -38,6 +38,7 @@ export default {
     hydration: Number,
     loafMass: Number,
     numLoaves: Number,
+    doughMass: Number,
   },
   methods: {
     updateLoafNum(num) {
