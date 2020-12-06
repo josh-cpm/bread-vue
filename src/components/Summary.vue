@@ -14,15 +14,20 @@
     </EditableButton>
     <EditableButton
       :name="this.$options.name"
-      :buttonValue="loafMass"
+      :buttonValue="loafMass + 'g'"
       :label="`Loaf Size`"
       @inputText="updateLoafMass"
       class="summary-loaf-mass"
     >
     </EditableButton>
-    <span class="summary-loaf-hydration white-cta"
-      >{{ Math.round(hydration * 100) }}% hydration</span
+    <EditableButton
+      :name="this.$options.name"
+      :buttonValue="Math.round(hydration * 100) + '%'"
+      :label="`Hydration`"
+      @inputText="updateHydration"
+      class="summary-loaf-hydration"
     >
+    </EditableButton>
   </div>
   <div class="dough-summary-stats">
     <span class="end-hydration-label">End hydration 82%</span>
