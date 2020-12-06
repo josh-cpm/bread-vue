@@ -29,15 +29,16 @@ Example:
     <div v-if="editingActive" class="white-cta start-time">
       <span>{{ label }}:</span>
       <input
-        :ref="name"
+        ref="buttoninput"
         :type="inputType"
         :placeholder="buttonValue"
+        :style="inputWidth"
         @keydown.enter="toggleEditing"
         @keydown.escape="toggleEditing"
         @blur="toggleEditing('close')"
         @input="
           $emit('input-text', $event.target.value);
-          resizeInput($event.target);
+          resizeInput();
         "
       />
       <span class="close-button" @click="toggleEditing">Done</span>
@@ -59,7 +60,6 @@ Example:
 export default {
   name: 'EditableButton',
   props: {
-    name: String,
     label: String,
     buttonValue: null,
     inputType: String,
@@ -71,26 +71,34 @@ export default {
       type: 'text',
     };
   },
+  computed: {
+    inputWidth() {
+      console.log(this.buttonValue.toString().length);
+      return `width:${this.buttonValue.toString().length + 0.5}ch`;
+    },
+  },
   methods: {
     focusOnInput() {
-      this.$nextTick(() => this.$refs[this.name].focus());
+      this.$nextTick(() => this.$refs.buttoninput.focus());
     },
     toggleEditing(direction) {
-      if (this.editingActive) {
-        this.editingActive = false;
-      } else {
-        this.editingActive = true;
-      }
       // force editing to start or stop
       if (direction == 'close') {
         this.editingActive = false;
       } else if (direction == 'open') {
         this.editingActive = true;
       }
+      // normal toggling when no props are passed
+      else if (this.editingActive) {
+        this.editingActive = false;
+      } else {
+        this.editingActive = true;
+      }
     },
-    resizeInput(target) {
-      target.style.width = '1px';
-      target.style.width = target.scrollWidth + 'px';
+    resizeInput() {
+      this.$refs.buttoninput.style.width = '1px';
+      this.$refs.buttoninput.style.width =
+        this.$refs.buttoninput.scrollWidth + 'px';
     },
   },
 };
@@ -102,7 +110,6 @@ input {
   margin: 0 1rem 0 0.25rem;
   padding: 0;
   text-align: left;
-  min-width: 8ch;
 }
 
 input::placeholder {
@@ -110,16 +117,19 @@ input::placeholder {
   font-family: Roboto;
 }
 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .white-cta input {
-  width: 4em;
   text-align: left;
   font-size: 1rem;
 }
 
 .white-cta {
   display: inline-block;
-  margin-bottom: 1rem;
-  margin-right: 0.3em;
   padding: 0.3em 0.6em;
   border-radius: 3px;
   background: white;
