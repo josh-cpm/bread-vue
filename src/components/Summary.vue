@@ -12,7 +12,14 @@
       class="summary-loaf-num"
     >
     </EditableButton>
-    <span class="summary-loaf-mass white-cta">{{ loafMass }}g</span>
+    <EditableButton
+      :name="this.$options.name"
+      :buttonValue="loafMass"
+      :label="`Loaf Size`"
+      @inputText="logger"
+      class="summary-loaf-mass"
+    >
+    </EditableButton>
     <span class="summary-loaf-hydration white-cta"
       >{{ Math.round(hydration * 100) }}% hydration</span
     >
