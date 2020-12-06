@@ -7,7 +7,11 @@
   <Summary
     v-model:numLoaves="numLoaves"
     :hydration="hydration"
-    :loafMass="loafMass"
+    :loafMass="singleLoafMass"
+    :doughMass="doughMass"
+    @changeloafnum="changeLoafNum"
+    @changeloafmass="changeLoafMass"
+    @changeloafhydration="changeLoafHydration"
   ></Summary>
   <div class="spacer"></div>
   <Ingredients
@@ -50,24 +54,53 @@ export default {
       return ing;
     },
     hydration() {
-      const totalLiquid = this.ingredients
+      return this.totalLiquid / this.totalFlour;
+    },
+    totalLiquid() {
+      return this.ingredients
         .filter((e) => e.type === 'liquid')
         .reduce((acc, cur) => acc + cur.qty, 0);
-      return totalLiquid / this.totalFlour;
     },
     totalFlour() {
       return this.ingredients
         .filter((e) => e.type === 'flour')
         .reduce((acc, cur) => acc + cur.qty, 0);
     },
-    loafMass() {
-      return this.ingredients.reduce((acc, cur) => acc + cur.qty, 0);
+    singleLoafMass() {
+      return Math.round(
+        this.ingredients.reduce((acc, cur) => acc + cur.qty, 0) / this.numLoaves
+      );
+    },
+    doughMass() {
+      return Math.round(
+        this.ingredients.reduce((acc, cur) => acc + cur.qty, 0)
+      );
     },
   },
   methods: {
     deleteIngredient(index) {
       console.log(index);
       this.ingredients.splice(index, 1);
+    },
+    changeLoafNum(newNumber) {
+      const factor = newNumber / this.numLoaves;
+      this.ingredients.forEach((e) => (e.qty *= factor));
+    },
+    changeLoafMass(mass) {
+      const factor = mass / this.singleLoafMass;
+      this.ingredients.forEach((e) => (e.qty *= factor));
+    },
+    changeLoafHydration(hydration) {
+      // Note, this changes bakers hydration ONLY. It leaves
+      const liquidAndFlour = this.totalLiquid + this.totalFlour;
+      const newTotalFlour = liquidAndFlour / (1 + hydration);
+      const flourFactor = newTotalFlour / this.totalFlour;
+      const liquidFactor = (liquidAndFlour - newTotalFlour) / this.totalLiquid;
+
+      this.ingredients.forEach((e) => {
+        if (e.type === 'flour') e.qty *= flourFactor;
+        if (e.type === 'liquid') e.qty *= liquidFactor;
+      });
     },
     logger(e) {
       console.log(e);

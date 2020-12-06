@@ -9,31 +9,63 @@
       :buttonValue="numLoaves"
       :label="`Loaves`"
       @inputText="updateLoafNum"
+      class="summary-loaf-num"
     >
     </EditableButton>
-    <span class="summary-loaf-num white-cta">{{ numLoaves }} loaf</span>
-    <span class="summary-loaf-mass white-cta">{{ loafMass }}g</span>
-    <span class="summary-loaf-hydration white-cta"
-      >{{ Math.round(hydration * 100) }}% hydration</span
+    <EditableButton
+      :name="this.$options.name"
+      :buttonValue="loafMass + 'g'"
+      :label="`Loaf Size`"
+      @inputText="updateLoafMass"
+      class="summary-loaf-mass"
     >
+    </EditableButton>
+    <EditableButton
+      :name="this.$options.name"
+      :buttonValue="Math.round(hydration * 100) + '%'"
+      :label="`Hydration`"
+      @inputText="updateLoafHydration"
+      class="summary-loaf-hydration"
+    >
+    </EditableButton>
   </div>
   <div class="dough-summary-stats">
     <span class="end-hydration-label">End hydration 82%</span>
-    <span class="end-hydration-label"> • Total dough 1350g</span>
+    <span class="end-hydration-label"> • Total dough {{ doughMass }}g</span>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Summary',
+  emits: [
+    'changeloafnum',
+    'update:numLoaves',
+    'changeloafmass',
+    'changeloafhydration',
+  ],
   props: {
     hydration: Number,
     loafMass: Number,
     numLoaves: Number,
+    doughMass: Number,
   },
   methods: {
     updateLoafNum(num) {
-      this.$emit('update:numLoaves', parseInt(num));
+      if (num > 0) {
+        this.$emit('changeloafnum', parseInt(num));
+        this.$emit('update:numLoaves', parseInt(num));
+      }
+    },
+    updateLoafMass(mass) {
+      if (mass > 0) {
+        this.$emit('changeloafmass', parseInt(mass));
+      }
+    },
+    updateLoafHydration(hydration) {
+      if (hydration > 0) {
+        this.$emit('changeloafhydration', parseInt(hydration) / 100);
+      }
     },
   },
 };
@@ -69,5 +101,10 @@ export default {
   font-size: 0.7rem;
   color: #6f6f6f;
   margin-top: 0.7rem;
+}
+
+.summary-control-row {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
