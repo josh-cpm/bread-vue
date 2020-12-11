@@ -83,7 +83,7 @@ export default {
       this.ingredients.splice(index, 1);
     },
     addIngredient() {
-      this.ingredients.push({ name: 'New Ingredient', qty: 0 });
+      this.ingredients.push({ qty: 0 });
     },
     changeLoafNum(newNumber) {
       const factor = newNumber / this.numLoaves;

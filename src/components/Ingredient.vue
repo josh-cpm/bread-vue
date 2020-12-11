@@ -12,6 +12,7 @@
           "
           @blur="toggleFocus"
           :value="name"
+          :placeholder="`New Ingredient`"
           @input="$emit('update:name', $event.target.value)"
         ></TextInput>
       </span>
