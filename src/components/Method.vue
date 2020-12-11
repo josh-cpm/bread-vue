@@ -98,6 +98,10 @@ export default {
   margin: 0.3rem;
 }
 
+.recipe-start-time {
+  margin-bottom: 0.8rem;
+}
+
 .black-line {
   background-color: black;
   height: 1px;
