@@ -84,6 +84,7 @@
         </button>
       </div>
     </div>
+    <div class="gray-divider"></div>
   </div>
 </template>
 
@@ -165,8 +166,9 @@ input[type='number']::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.ingredient {
-  border-top: 1px solid #c4c4c4;
+.gray-divider {
+  height: 1px;
+  background-color: #c4c4c4;
 }
 
 .ingredient-row {
