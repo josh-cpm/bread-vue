@@ -9,7 +9,7 @@
       :buttonValue="numLoaves"
       :label="`Loaves`"
       @inputText="updateLoafNum"
-      class="summary-loaf-num"
+      class="summary-loaf-num summary-input"
     >
     </EditableButton>
     <EditableButton
@@ -17,7 +17,7 @@
       :buttonValue="loafMass + 'g'"
       :label="`Loaf Size`"
       @inputText="updateLoafMass"
-      class="summary-loaf-mass"
+      class="summary-loaf-mass summary-input"
     >
     </EditableButton>
     <EditableButton
@@ -25,7 +25,7 @@
       :buttonValue="Math.round(hydration * 100) + '%'"
       :label="`Hydration`"
       @inputText="updateLoafHydration"
-      class="summary-loaf-hydration"
+      class="summary-loaf-hydration summary-input"
     >
     </EditableButton>
   </div>
@@ -106,5 +106,6 @@ export default {
 .summary-control-row {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 </style>
