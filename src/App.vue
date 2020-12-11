@@ -18,6 +18,7 @@
     :ingredients="ingredientsWithKey"
     :totalFlour="totalFlour"
     @delete-ingredient="deleteIngredient"
+    @add-ingredient="addIngredient"
   ></Ingredients>
   <div class="spacer"></div>
   <Method :steps="steps"></Method>
@@ -79,8 +80,10 @@ export default {
   },
   methods: {
     deleteIngredient(index) {
-      console.log(index);
       this.ingredients.splice(index, 1);
+    },
+    addIngredient() {
+      this.ingredients.push({ qty: 0 });
     },
     changeLoafNum(newNumber) {
       const factor = newNumber / this.numLoaves;
