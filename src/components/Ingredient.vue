@@ -1,7 +1,7 @@
 <template>
   <div class="ingredient">
     <div class="ingredient-row">
-      <span ref="ingredientName">
+      <span ref="ingredientName" class="ingredient-name-container">
         <TextInput
           class="ingredient-name"
           @focus="
@@ -173,11 +173,11 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .ingredient-row {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -199,6 +199,10 @@ input[type='number']::-webkit-outer-spin-button {
 
 .ingredient-name {
   margin-right: 1em;
+}
+
+.ingredient-name-container {
+  flex-grow: 3;
 }
 
 .ingredient-percent {
