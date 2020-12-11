@@ -21,7 +21,6 @@
           <input
             class="ingredient-quantity"
             type="number"
-            inputmode="numeric"
             :value="Math.round(quantity)"
             @focus="
               toggleEditor('open');
@@ -41,7 +40,6 @@
             class="ingredient-percent "
             :value="Math.round(bpercent * 100)"
             type="number"
-            inputmode="numeric"
             @focus="
               toggleEditor('open');
               setUnderline();

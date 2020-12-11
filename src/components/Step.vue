@@ -52,7 +52,6 @@
           :name="this.$options.name"
           :buttonValue="stepDuration + ' min'"
           :label="`Duration`"
-          :inputmode="`numeric`"
           @inputText="updateDuration($event)"
         ></EditableButton>
       </div>
