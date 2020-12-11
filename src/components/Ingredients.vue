@@ -15,7 +15,9 @@
         v-model:type="ingredient.type"
         @delete-ingredient="$emit('delete-ingredient', index)"
       ></Ingredient>
-      <span class="" id="add-ing-button">+ Add Ingredient</span>
+      <span @click="$emit('add-ingredient')" class="" id="add-ing-button"
+        >+ Add Ingredient</span
+      >
     </div>
   </div>
 </template>
