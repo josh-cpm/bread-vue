@@ -30,7 +30,7 @@ Example:
       <span>{{ label }}:</span>
       <input
         ref="buttoninput"
-        :type="inputType"
+        :inputmode="inputmode"
         :placeholder="buttonValue"
         :style="inputWidth"
         @keydown.enter="toggleEditing"
@@ -62,13 +62,12 @@ export default {
   props: {
     label: String,
     buttonValue: null,
-    inputType: String,
+    inputmode: String,
     active: Boolean,
   },
   data() {
     return {
       editingActive: this.active,
-      type: 'text',
     };
   },
   computed: {
