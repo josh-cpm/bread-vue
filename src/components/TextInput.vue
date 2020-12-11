@@ -32,5 +32,6 @@ textarea {
   height: 1.6em;
   overflow: hidden;
   padding: 0.3em 0;
+  vertical-align: bottom;
 }
 </style>

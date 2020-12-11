@@ -3,6 +3,7 @@
     <div class="section-header">
       <h3>INGREDIENTS</h3>
     </div>
+    <div class="gray-divider"></div>
     <div class="ingredient-list">
       <Ingredient
         v-for="(ingredient, index) in ingredients"
@@ -54,8 +55,12 @@ export default {
   max-width: 25rem;
 }
 
+.gray-divider {
+  height: 1px;
+  background-color: #c4c4c4;
+}
+
 .tiptext {
-  /* font-family: Monaco; */
   font-size: 0.7rem;
   color: #6f6f6f;
 }
