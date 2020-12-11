@@ -40,9 +40,6 @@ export default {
       console.log(e);
     },
   },
-  created() {
-    console.log(this.ingredients);
-  },
 };
 </script>
 

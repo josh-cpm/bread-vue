@@ -80,7 +80,6 @@ export default {
   },
   methods: {
     deleteIngredient(index) {
-      console.log(index);
       this.ingredients.splice(index, 1);
     },
     addIngredient() {
