@@ -73,7 +73,6 @@ export default {
 
 <style scoped>
 .tiptext {
-  /* font-family: Monaco; */
   font-size: 0.7rem;
   color: #6f6f6f;
 }
@@ -100,12 +99,16 @@ export default {
 .dough-summary-stats {
   font-size: 0.7rem;
   color: #6f6f6f;
-  margin-top: 0.7rem;
+  margin-top: 0.2rem;
 }
 
 .summary-control-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+}
+
+.summary-input {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 </style>
