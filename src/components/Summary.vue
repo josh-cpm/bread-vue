@@ -1,8 +1,6 @@
 <template>
-  <div class="section-header">
-    <h3>SUMMARY</h3>
-    <span class="tiptext">Tap to edit</span>
-  </div>
+  <h3 class="section-header">SUMMARY</h3>
+  <div class="tiptext">Tap to edit</div>
   <div class="summary-control-row">
     <EditableButton
       :name="this.$options.name"
@@ -72,18 +70,14 @@ export default {
 </script>
 
 <style scoped>
+.section-header {
+  margin-bottom: 0.2rem;
+}
+
 .tiptext {
   font-size: 0.7rem;
   color: #6f6f6f;
-}
-
-.section-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
   margin-bottom: 0.5rem;
-  max-width: 20rem;
 }
 
 .white-cta {
@@ -104,6 +98,7 @@ export default {
 
 .summary-control-row {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
