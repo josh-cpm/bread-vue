@@ -6,6 +6,7 @@
       :name="this.$options.name"
       :buttonValue="numLoaves"
       :label="`Loaves`"
+      :inputmode="`numeric`"
       @inputText="updateLoafNum"
       class="summary-loaf-num summary-input"
     >
@@ -14,6 +15,7 @@
       :name="this.$options.name"
       :buttonValue="loafMass + 'g'"
       :label="`Loaf Size`"
+      :inputmode="`numeric`"
       @inputText="updateLoafMass"
       class="summary-loaf-mass summary-input"
     >
@@ -22,6 +24,7 @@
       :name="this.$options.name"
       :buttonValue="Math.round(hydration * 100) + '%'"
       :label="`Hydration`"
+      :inputmode="`numeric`"
       @inputText="updateLoafHydration"
       class="summary-loaf-hydration summary-input"
     >
