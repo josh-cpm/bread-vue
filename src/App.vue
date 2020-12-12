@@ -91,7 +91,13 @@ export default {
     },
     endHydration() {
       const totalPreferment = this.ingredients
-        .filter((e) => e.type === 'preferment')
+        .filter(
+          (e) =>
+            e.type === 'preferment' ||
+            e.type === 'yeast' ||
+            e.type === 'starter' ||
+            e.type === 'levain'
+        )
         .reduce((acc, cur) => acc + cur.qty, 0);
       const recipeFlour = this.totalFlour + totalPreferment / 2;
       const recipeLiquid = this.totalLiquid + totalPreferment / 2;

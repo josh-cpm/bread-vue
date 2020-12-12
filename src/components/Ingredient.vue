@@ -59,7 +59,9 @@
         <option :selected="selectedOption('liquid')" value="liquid"
           >Liquid</option
         >
-        <option value="yeast" :selected="selectedOption('yeast')">Yeast</option>
+        <option value="yeast" :selected="selectedOption('preferment')"
+          >Preferment</option
+        >
         <option value="salt" :selected="selectedOption('salt')">Salt</option>
         <option value="other" :selected="selectedOption('other')">Other</option>
       </select>
