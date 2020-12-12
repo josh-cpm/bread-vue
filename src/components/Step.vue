@@ -59,26 +59,26 @@
         ></EditableButton>
       </div>
       <div class="step-editor-options ">
+        <div class="step-editor-option-buttons">
+          <button @click="$emit('delete-step', index)" class="delete-button">
+            Delete Step
+          </button>
+          <span
+            @click="$emit('move', { index, direction: 'up' })"
+            class=" arrow-icon"
+          >
+            ⬆
+          </span>
+          <span
+            @click="$emit('move', { index, direction: 'down' })"
+            class="arrow-icon"
+          >
+            ⬇
+          </span>
+        </div>
         <button class="black-cta" @click="toggleEditor">
           Done
         </button>
-        <div class="step-editor-option-buttons">
-          <button @click="$emit('delete-step', index)" class="white-cta">
-            Delete Step
-          </button>
-          <button
-            @click="$emit('move', { index, direction: 'up' })"
-            class="white-cta arrow-icon"
-          >
-            ⬆
-          </button>
-          <button
-            @click="$emit('move', { index, direction: 'down' })"
-            class="white-cta arrow-icon"
-          >
-            ⬇
-          </button>
-        </div>
       </div>
       <div class="black-line"></div>
     </div>
@@ -217,11 +217,9 @@ textarea {
   padding: 0;
 }
 
-.black-cta,
-.white-cta {
+.black-cta {
   margin-right: 0.3em;
   padding: 0.3em 0.6em;
-  border-radius: 3px;
   color: white;
   border: 1px solid black;
   background-color: black;
@@ -229,10 +227,18 @@ textarea {
   font-size: 1rem;
 }
 
-.white-cta {
-  background-color: white;
-  color: black;
-  border: 1px solid black;
+.arrow-icon {
+  margin-right: 0.3em;
+  padding: 0.3em 0.6em;
+}
+
+.delete-button {
+  font-size: 1rem;
+  color: #791d34;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
 }
 
 .black-line {

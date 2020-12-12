@@ -1,7 +1,13 @@
 <template>
   <section class="method-section">
-    <h3>METHOD</h3>
-    <div class="black-line"></div>
+    <div>
+      <h3>METHOD</h3>
+      <div class="tiptext">
+        Use this section to figure out what to do when. Feel free to change the
+        start time. If a step goes long or short, you can simply tap it and edit
+        the start time. All the other times will update automatically.
+      </div>
+    </div>
     <StartTime
       class="recipe-start-time"
       @changeStartTime="changeStartTime"
@@ -98,22 +104,25 @@ export default {
   margin-bottom: 0.8rem;
 }
 
-.black-line {
-  background-color: black;
-  height: 1px;
-  margin-bottom: 1rem;
-}
-
 .black-cta {
   display: inline-block;
   margin-right: 0.3em;
   padding: 0.3em 0.6em;
   height: fit-content;
-  border-radius: 3px;
   color: white;
   border: 1px solid black;
   background: black;
   cursor: pointer;
   font-size: 1rem;
+}
+
+.tiptext {
+  font-size: 0.7rem;
+  color: #6f6f6f;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  margin-bottom: 0.5rem;
 }
 </style>

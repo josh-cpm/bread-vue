@@ -240,7 +240,7 @@ select:focus,
   border: none;
   border-bottom: 1px solid black;
   font-size: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
