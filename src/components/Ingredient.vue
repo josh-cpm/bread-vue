@@ -195,6 +195,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 .ingredient-name {
   margin-right: 1em;
+  margin-bottom: 0.2em;
 }
 
 .ingredient-name-container {
