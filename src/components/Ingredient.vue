@@ -38,7 +38,7 @@
         <span ref="ingredientBPercent" class="ingredient-row-sub-sub-flex">
           <input
             class="ingredient-percent "
-            :value="Math.round(bpercent * 100)"
+            :value="bakersPercent"
             type="number"
             @focus="
               toggleEditor('open');
@@ -103,6 +103,15 @@ export default {
       editing: false,
       selectedField: '',
     };
+  },
+  computed: {
+    bakersPercent() {
+      if (this.type === 'salt') {
+        return Math.round(1000 * this.bpercent) / 10;
+      } else {
+        return Math.round(100 * this.bpercent);
+      }
+    },
   },
   methods: {
     logger(e) {
