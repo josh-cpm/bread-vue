@@ -11,6 +11,7 @@
         :hydration="hydration"
         :loafMass="singleLoafMass"
         :doughMass="doughMass"
+        :endHydration="endHydration"
         @changeloafnum="changeLoafNum"
         @changeloafmass="changeLoafMass"
         @changeloafhydration="changeLoafHydration"
@@ -80,6 +81,9 @@ export default {
       return Math.round(
         this.ingredients.reduce((acc, cur) => acc + cur.qty, 0)
       );
+    },
+    endHydration() {
+      return '80';
     },
   },
   methods: {
