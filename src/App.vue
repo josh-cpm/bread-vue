@@ -2,8 +2,8 @@
   <div class="recipe-layout">
     <section class="recipe-container">
       <Header
-        :recipeTitle="recipeTitle"
-        :recipeDescription="recipeDescription"
+        v-model:recipeTitle="recipeTitle"
+        v-model:recipeDescription="recipeDescription"
       ></Header>
       <div class="spacer"></div>
       <Summary
