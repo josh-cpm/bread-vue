@@ -133,6 +133,11 @@ export default {
 </script>
 
 <style scoped>
+a {
+  color: #b59a5b;
+  text-decoration: none;
+}
+
 .recipe-layout {
   display: grid;
   grid-template-columns: 0.5rem 100fr 0.5rem;
