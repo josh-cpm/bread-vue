@@ -94,10 +94,6 @@ export default {
 </script>
 
 <style scoped>
-.method-section {
-  margin: 0.3rem;
-}
-
 .recipe-start-time {
   margin-bottom: 0.8rem;
 }
