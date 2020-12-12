@@ -4,6 +4,7 @@
       <span ref="ingredientName" class="ingredient-name-container">
         <TextInput
           class="ingredient-name"
+          spellcheck="false"
           @focus="
             toggleEditor('open');
             setUnderline();
