@@ -20,7 +20,7 @@
       <div class="step-editor-header">
         <h4>Edit Step</h4>
       </div>
-      <div>
+      <div class="method-step-element-editor">
         <EditableButton
           :name="this.$options.name"
           :buttonValue="stepTitle"
@@ -28,18 +28,19 @@
           @inputText="$emit('update:stepTitle', $event)"
         ></EditableButton>
       </div>
-      <div class="method-step-description-editor">
-        <textarea
-          ref="description"
-          :value="stepInstructions"
-          @input="
-            $emit('update:stepInstructions', $event.target.value);
-            resizeTextAreaHeight();
-          "
-        >
-        </textarea>
-      </div>
-      <div>
+
+      <textarea
+        class="method-step-description-editor"
+        ref="description"
+        :value="stepInstructions"
+        @input="
+          $emit('update:stepInstructions', $event.target.value);
+          resizeTextAreaHeight();
+        "
+      >
+      </textarea>
+
+      <div class="method-step-element-editor">
         <EditableButton
           :name="this.$options.name"
           :buttonValue="stepTimeString"
@@ -47,7 +48,7 @@
           @inputText="$emit('start-time-change', { $event, index })"
         ></EditableButton>
       </div>
-      <div>
+      <div class="method-step-element-editor">
         <EditableButton
           :name="this.$options.name"
           :buttonValue="stepDuration + ' min'"
@@ -110,7 +111,6 @@ export default {
       } else {
         return dateFormat(this.stepStartTime, 'h:MMtt');
       }
-      // return dateFormat(this.stepStartTime, 'h:MMtt');
     },
   },
   methods: {
@@ -120,7 +120,7 @@ export default {
     resizeTextAreaHeight() {
       const element = this.$refs.description;
       element.style.height = '1px';
-      element.style.height = element.scrollHeight + 6 + 'px';
+      element.style.height = element.scrollHeight + 3 + 'px';
     },
     updateDuration(event) {
       this.$emit('update:stepDuration', parseInt(event));
@@ -158,6 +158,7 @@ input {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 1.5rem;
 }
 
 .method-step-title input {
@@ -175,11 +176,13 @@ textarea {
   resize: none;
   border: 1px solid black;
   border-radius: 3px;
-  padding: 0.3em 0.6em;
-  padding-top: 0.6em;
-  margin-bottom: 1rem;
+  padding: 0.4em 0.6em;
   font-family: sans-serif;
   font-size: 1rem;
+}
+
+.method-step-description-editor {
+  margin-bottom: 0.3rem;
 }
 
 .inline-button {
@@ -233,5 +236,9 @@ textarea {
 .step-editor-header {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.method-step-element-editor {
+  margin-bottom: 0.5rem;
 }
 </style>
