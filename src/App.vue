@@ -83,7 +83,12 @@ export default {
       );
     },
     endHydration() {
-      return '80';
+      const totalPreferment = this.ingredients
+        .filter((e) => e.type === 'preferment')
+        .reduce((acc, cur) => acc + cur.qty, 0);
+      const recipeFlour = this.totalFlour + totalPreferment / 2;
+      const recipeLiquid = this.totalLiquid + totalPreferment / 2;
+      return Math.round((100 * recipeLiquid) / recipeFlour);
     },
   },
   methods: {
