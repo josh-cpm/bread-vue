@@ -8,7 +8,6 @@
             toggleEditor('open');
             setUnderline();
             toggleFocus($event);
-            setSelectedField('name');
           "
           @blur="toggleFocus"
           :value="name"
@@ -26,7 +25,6 @@
               toggleEditor('open');
               setUnderline();
               toggleFocus($event);
-              setSelectedField('qty');
             "
             @blur="toggleFocus"
             @input="$emit('update:quantity', parseInt($event.target.value))"
@@ -44,7 +42,6 @@
               toggleEditor('open');
               setUnderline();
               toggleFocus($event);
-              setSelectedField('bpct');
             "
             @blur="toggleFocus"
           /><span class="label gray">%</span>
@@ -140,9 +137,6 @@ export default {
     toggleFocus(e) {
       e.target.parentNode.classList.toggle('gold-underline');
     },
-    // setSelectedField(field) {
-    //   this.selectedField = field;
-    // },
     selectedOption(fieldType) {
       if (fieldType === this.type) {
         return true;
