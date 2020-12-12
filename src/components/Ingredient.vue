@@ -188,7 +188,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 .ingredient-row-sub-sub-flex {
   display: flex;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 .ingredient-quantity {
