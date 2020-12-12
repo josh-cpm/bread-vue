@@ -66,7 +66,6 @@
         <option value="salt" :selected="selectedOption('salt')">Salt</option>
         <option value="other" :selected="selectedOption('other')">Other</option>
       </select>
-      <IngredientHint :selectedField="selectedField"></IngredientHint>
       <div class="ingredient-editor-buttons">
         <button
           class="delete-ingredient-button"
@@ -90,11 +89,8 @@
 </template>
 
 <script>
-import IngredientHint from './IngredientHint';
-
 export default {
   name: 'Ingredient',
-  components: { IngredientHint },
   props: {
     name: String,
     quantity: Number,
@@ -135,9 +131,9 @@ export default {
     toggleFocus(e) {
       e.target.parentNode.classList.toggle('gold-underline');
     },
-    setSelectedField(field) {
-      this.selectedField = field;
-    },
+    // setSelectedField(field) {
+    //   this.selectedField = field;
+    // },
     selectedOption(fieldType) {
       if (fieldType === this.type) {
         return true;
