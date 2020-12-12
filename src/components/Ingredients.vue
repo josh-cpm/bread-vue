@@ -2,6 +2,10 @@
   <div>
     <div class="section-header">
       <h3>INGREDIENTS</h3>
+      <div class="tiptext">
+        Tap any ingredient to edit it. Feel free to add your own, or weak the
+        recipe as desired.
+      </div>
     </div>
     <div class="gray-divider"></div>
     <div class="ingredient-list">
@@ -15,9 +19,15 @@
         v-model:type="ingredient.type"
         @delete-ingredient="$emit('delete-ingredient', index)"
       ></Ingredient>
-      <span @click="$emit('add-ingredient')" class="" id="add-ing-button"
-        >+ Add Ingredient</span
-      >
+      <div>
+        <button
+          @click="$emit('add-ingredient')"
+          class="black-cta"
+          id="add-ing-button"
+        >
+          Add Ingredient
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -44,10 +54,6 @@ export default {
 </script>
 
 <style scoped>
-#add-ing-button {
-  margin-top: 1rem;
-}
-
 .ingredient-list {
   display: flex;
   flex-direction: column;
@@ -61,14 +67,22 @@ export default {
 .tiptext {
   font-size: 0.7rem;
   color: #6f6f6f;
+  margin-bottom: 1rem;
 }
 
-.section-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
+h3 {
   margin-bottom: 0.5rem;
-  max-width: 20rem;
+}
+
+.black-cta {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.3em 0.6em;
+  height: fit-content;
+  color: white;
+  border: 1px solid black;
+  background: black;
+  cursor: pointer;
+  font-size: 1rem;
 }
 </style>

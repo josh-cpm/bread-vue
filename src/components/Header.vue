@@ -8,6 +8,7 @@
   />
   <button @click="hideDone" v-if="editingTitle" class="white-cta">Done</button>
   <TextInput
+    class="recipe-subtitle"
     @input="$emit('update:recipeDescription', $event.target.value)"
     :value="recipeDescription"
     @focus="showDone('editingSubtitle')"
@@ -50,7 +51,12 @@ export default {
 <style scoped>
 .recipe-title {
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-subtitle {
+  font-size: 0.8rem;
 }
 
 .white-cta {

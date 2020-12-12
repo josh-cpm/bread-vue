@@ -6,6 +6,13 @@
         v-model:recipeDescription="recipeDescription"
       ></Header>
       <div class="spacer"></div>
+      <Ingredients
+        :ingredients="ingredientsWithKey"
+        :totalFlour="totalFlour"
+        @delete-ingredient="deleteIngredient"
+        @add-ingredient="addIngredient"
+      ></Ingredients>
+      <div class="spacer"></div>
       <Summary
         v-model:numLoaves="numLoaves"
         :hydration="hydration"
@@ -17,14 +24,14 @@
         @changeloafhydration="changeLoafHydration"
       ></Summary>
       <div class="spacer"></div>
-      <Ingredients
-        :ingredients="ingredientsWithKey"
-        :totalFlour="totalFlour"
-        @delete-ingredient="deleteIngredient"
-        @add-ingredient="addIngredient"
-      ></Ingredients>
-      <div class="spacer"></div>
       <Method :steps="steps"></Method>
+      <div class="footer">
+        <div class="spacer"></div>
+        <hr />
+        <div class="signature">
+          Made with love by <a href="https://joshcpm.com">Josh</a>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -148,5 +155,10 @@ export default {
   background: white;
   border: 1px solid black;
   cursor: pointer;
+}
+
+.signature {
+  margin: 2rem 0;
+  text-align: center;
 }
 </style>

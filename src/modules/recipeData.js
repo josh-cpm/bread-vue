@@ -1,7 +1,9 @@
 export const recipe = {
   recipeInfo: {
     title: 'Basic Sourdough',
-    description: 'My go-to weekday loaf.',
+    description: `Welcome to the recipe for my go-to weekday loaf. This recipe is very forgiving, feel free to make a lot of tweaks along the way. 
+      
+Keep in mind that any changes you make will go away as soon as you refresh the page. I'm working on adding local storage so that your changes are saved as long as you stay in your browser, but for now they are completely temporary.`,
   },
   ingredients: [
     {

@@ -130,7 +130,6 @@ input[type='number']::-webkit-outer-spin-button {
 .white-cta {
   display: inline-block;
   padding: 0.3em 0.6em;
-  border-radius: 3px;
   background: white;
   border: 1px solid black;
   cursor: pointer;

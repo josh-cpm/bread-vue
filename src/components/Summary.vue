@@ -1,6 +1,18 @@
 <template>
   <h3 class="section-header">SUMMARY</h3>
-  <div class="tiptext">Tap to edit</div>
+  <div class="tiptext">
+    Scale your loaf up or down, or tweak the hydration.
+    <span class="dough-summary-stats">
+      <span class="end-hydration-label">
+        Assuming you're using a 100% hydration levain, your end loaf hydration
+        is
+        {{ endHydration }}%,</span
+      >
+      <span class="end-hydration-label">
+        and you're baking an {{ doughMass }}g dough.</span
+      >
+    </span>
+  </div>
   <div class="summary-control-row">
     <EditableButton
       :name="this.$options.name"
@@ -29,10 +41,6 @@
       class="summary-loaf-hydration summary-input"
     >
     </EditableButton>
-  </div>
-  <div class="dough-summary-stats">
-    <span class="end-hydration-label">End hydration {{ endHydration }}%</span>
-    <span class="end-hydration-label"> • Total dough {{ doughMass }}g</span>
   </div>
 </template>
 
@@ -75,23 +83,13 @@ export default {
 
 <style scoped>
 .section-header {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .tiptext {
   font-size: 0.7rem;
   color: #6f6f6f;
-  margin-bottom: 0.5rem;
-}
-
-.white-cta {
-  display: inline-block;
-  margin-right: 0.3em;
-  padding: 0.3em 0.6em;
-  border-radius: 3px;
-  background: white;
-  border: 1px solid black;
-  cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .dough-summary-stats {
