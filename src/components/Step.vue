@@ -11,7 +11,9 @@
       <span class="method-time inline-button">{{ stepTimeString }}</span>
       <div class="method-step-description">
         {{ stepInstructions }}
-        <span class="step-duration inline-button">{{ stepDuration }} min</span>
+        <span class="step-duration inline-button">{{
+          stepDurationFormatted
+        }}</span>
       </div>
     </div>
 
@@ -112,6 +114,16 @@ export default {
         return dateFormat(this.stepStartTime, 'h:MMtt');
       }
     },
+    stepDurationFormatted() {
+      if (this.stepDuration < 60) {
+        return this.stepDuration + ' min';
+      } else {
+        const hours = Math.floor(this.stepDuration / 60);
+        const minutes = this.stepDuration % 60;
+        const minString = minutes > 0 ? `, ${minutes} min` : '';
+        return `${hours} hours${minString}`;
+      }
+    },
   },
   methods: {
     toggleEditor() {
@@ -201,6 +213,8 @@ textarea {
 
 .step-duration {
   border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .black-cta,
