@@ -1,27 +1,31 @@
 <template>
-  <Header
-    :recipeTitle="recipeTitle"
-    :recipeDescription="recipeDescription"
-  ></Header>
-  <div class="spacer"></div>
-  <Summary
-    v-model:numLoaves="numLoaves"
-    :hydration="hydration"
-    :loafMass="singleLoafMass"
-    :doughMass="doughMass"
-    @changeloafnum="changeLoafNum"
-    @changeloafmass="changeLoafMass"
-    @changeloafhydration="changeLoafHydration"
-  ></Summary>
-  <div class="spacer"></div>
-  <Ingredients
-    :ingredients="ingredientsWithKey"
-    :totalFlour="totalFlour"
-    @delete-ingredient="deleteIngredient"
-    @add-ingredient="addIngredient"
-  ></Ingredients>
-  <div class="spacer"></div>
-  <Method :steps="steps"></Method>
+  <div class="recipe-layout">
+    <section class="recipe-container">
+      <Header
+        :recipeTitle="recipeTitle"
+        :recipeDescription="recipeDescription"
+      ></Header>
+      <div class="spacer"></div>
+      <Summary
+        v-model:numLoaves="numLoaves"
+        :hydration="hydration"
+        :loafMass="singleLoafMass"
+        :doughMass="doughMass"
+        @changeloafnum="changeLoafNum"
+        @changeloafmass="changeLoafMass"
+        @changeloafhydration="changeLoafHydration"
+      ></Summary>
+      <div class="spacer"></div>
+      <Ingredients
+        :ingredients="ingredientsWithKey"
+        :totalFlour="totalFlour"
+        @delete-ingredient="deleteIngredient"
+        @add-ingredient="addIngredient"
+      ></Ingredients>
+      <div class="spacer"></div>
+      <Method :steps="steps"></Method>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -112,28 +116,17 @@ export default {
 };
 </script>
 
-<style>
-* {
-  font-family: 'Roboto', sans-serif;
-  padding: 0;
-  margin: 0;
+<style scoped>
+.recipe-layout {
+  display: grid;
+  grid-template-columns: 0.5rem 100fr 0.5rem;
+  justify-items: center;
 }
 
-html {
-  font-size: 20px;
-}
-
-h1 {
-  margin-top: 1rem;
-  margin-bottom: 0.2rem;
-}
-
-h3 {
-  font-size: 0.8rem;
-}
-
-#app {
-  margin: 2rem 1rem;
+.recipe-container {
+  grid-column: 2;
+  min-width: 15rem;
+  max-width: 30rem;
 }
 
 .spacer {
