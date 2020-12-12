@@ -21,6 +21,7 @@
           <input
             class="ingredient-quantity"
             type="number"
+            inputmode="numeric"
             :value="Math.round(quantity)"
             @focus="
               toggleEditor('open');
