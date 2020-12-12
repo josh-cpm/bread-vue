@@ -49,7 +49,7 @@ export default {
     };
   },
   created() {
-    this.method = new RecipeMethod(this.steps, new Date());
+    this.method = new RecipeMethod(this.steps, chrono.parseDate('9am'));
   },
   methods: {
     changeStartTime(timeString) {
@@ -94,10 +94,6 @@ export default {
 </script>
 
 <style scoped>
-.method-section {
-  margin: 0.3rem;
-}
-
 .recipe-start-time {
   margin-bottom: 0.8rem;
 }
