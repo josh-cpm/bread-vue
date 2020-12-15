@@ -1,51 +1,51 @@
 <template>
   <div class="ingredient">
-    <div class="ingredient-row">
-      <span ref="ingredientName" class="ingredient-name-container">
+    <div class="ingredient-row" @click="toggleEditor('open')">
+      <span
+        ref="ingredientName"
+        :class="[underlineInput, { 'gold-underline': nameSelected }]"
+        class="ingredient-name-container"
+      >
         <TextInput
           class="ingredient-name"
           spellcheck="false"
-          @focus="
-            toggleEditor('open');
-            setUnderline();
-            toggleFocus($event);
-          "
-          @blur="toggleFocus"
+          @focus="nameSelected = true"
+          @blur="nameSelected = false"
           :value="name"
           :placeholder="`New Ingredient`"
           @input="$emit('update:name', $event.target.value)"
         ></TextInput>
       </span>
       <span class="ingredient-row-sub-flex">
-        <span ref="ingredientQuantity" class="ingredient-row-sub-sub-flex">
+        <span
+          :class="[underlineInput, { 'gold-underline': qtySelected }]"
+          ref="ingredientQuantity"
+          class="ingredient-row-sub-sub-flex"
+        >
           <input
             class="ingredient-quantity"
             type="number"
             inputmode="numeric"
             :value="Math.round(quantity)"
-            @focus="
-              toggleEditor('open');
-              setUnderline();
-              toggleFocus($event);
-            "
-            @blur="toggleFocus"
+            @focus="qtySelected = true"
+            @blur="qtySelected = false"
             @input="$emit('update:quantity', parseInt($event.target.value))"
           />
           <span class="label black">
             g
           </span>
         </span>
-        <span ref="ingredientBPercent" class="ingredient-row-sub-sub-flex">
+        <span
+          ref="ingredientBPercent"
+          :class="[underlineInput, { 'gold-underline': bPctSelected }]"
+          class="ingredient-row-sub-sub-flex"
+        >
           <input
             class="ingredient-percent "
             :value="bakersPercent"
             type="number"
-            @focus="
-              toggleEditor('open');
-              setUnderline();
-              toggleFocus($event);
-            "
-            @blur="toggleFocus"
+            @focus="bPctSelected = true"
+            @blur="bPctSelected = false"
           /><span class="label gray">%</span>
         </span>
       </span>
@@ -103,6 +103,9 @@ export default {
     return {
       editing: false,
       selectedField: '',
+      nameSelected: false,
+      qtySelected: false,
+      bPctSelected: false,
     };
   },
   computed: {
@@ -112,6 +115,11 @@ export default {
       } else {
         return Math.round(100 * this.bpercent);
       }
+    },
+    underlineInput() {
+      return {
+        underline: this.editing,
+      };
     },
   },
   methods: {
@@ -137,9 +145,6 @@ export default {
         this.$refs.ingredientQuantity.classList.remove('underline');
         this.$refs.ingredientName.classList.remove('underline');
       }
-    },
-    toggleFocus(e) {
-      e.target.parentNode.classList.toggle('gold-underline');
     },
     selectedOption(fieldType) {
       if (fieldType === this.type) {
@@ -227,6 +232,7 @@ select,
 }
 
 select:focus,
+.ingredient-name-container:focus,
 .gold-underline {
   box-shadow: 0 2px 0px 0px #b59a5b;
   border-bottom: 1px solid #b59a5b;
