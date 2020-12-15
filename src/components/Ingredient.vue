@@ -74,13 +74,7 @@
         >
           Delete Ingredient
         </button>
-        <button
-          @click="
-            toggleEditor();
-            setUnderline();
-          "
-          class="close-editor-button"
-        >
+        <button @click="toggleEditor()" class="close-editor-button">
           Done
         </button>
       </div>
@@ -133,17 +127,6 @@ export default {
         this.editing = false;
       } else {
         this.editing ? (this.editing = false) : (this.editing = true);
-      }
-    },
-    setUnderline() {
-      if (this.editing === true) {
-        this.$refs.ingredientBPercent.classList.add('underline');
-        this.$refs.ingredientQuantity.classList.add('underline');
-        this.$refs.ingredientName.classList.add('underline');
-      } else {
-        this.$refs.ingredientBPercent.classList.remove('underline');
-        this.$refs.ingredientQuantity.classList.remove('underline');
-        this.$refs.ingredientName.classList.remove('underline');
       }
     },
     selectedOption(fieldType) {
