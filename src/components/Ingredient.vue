@@ -117,10 +117,8 @@ export default {
       }
     },
     underlineInput() {
-      console.log(this.nameSelected);
       return {
         underline: this.editing,
-        // 'gold-underline': nameSelected,
       };
     },
   },
@@ -147,9 +145,6 @@ export default {
         this.$refs.ingredientQuantity.classList.remove('underline');
         this.$refs.ingredientName.classList.remove('underline');
       }
-    },
-    toggleFocus(e) {
-      e.target.parentNode.classList.toggle('gold-underline');
     },
     selectedOption(fieldType) {
       if (fieldType === this.type) {
@@ -237,6 +232,7 @@ select,
 }
 
 select:focus,
+.ingredient-name-container:focus,
 .gold-underline {
   box-shadow: 0 2px 0px 0px #b59a5b;
   border-bottom: 1px solid #b59a5b;
