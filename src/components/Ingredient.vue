@@ -51,33 +51,43 @@
       </span>
     </div>
     <div v-if="editing" class="ingredient-editor">
-      <select
-        @input="$emit('update:type', $event.target.value)"
-        name="ingredient-type-selector"
-        class="ingredient-type-selector"
-      >
-        <option value="none">Select Ingredient Type</option>
-        <option value="flour" :selected="selectedOption('flour')">Flour</option>
-        <option :selected="selectedOption('liquid')" value="liquid"
-          >Liquid</option
-        >
-        <option value="yeast" :selected="selectedOption('preferment')"
-          >Preferment</option
-        >
-        <option value="salt" :selected="selectedOption('salt')">Salt</option>
-        <option value="other" :selected="selectedOption('other')">Other</option>
-      </select>
-      <div class="ingredient-editor-buttons">
-        <button
-          class="delete-ingredient-button"
-          @click="$emit('delete-ingredient', index)"
-        >
-          Delete Ingredient
-        </button>
-        <button @click="toggleEditor()" class="close-editor-button">
-          Done
-        </button>
-      </div>
+      <transition>
+        <div>
+          <select
+            @input="$emit('update:type', $event.target.value)"
+            name="ingredient-type-selector"
+            class="ingredient-type-selector"
+          >
+            <option value="none">Select Ingredient Type</option>
+            <option value="flour" :selected="selectedOption('flour')"
+              >Flour</option
+            >
+            <option :selected="selectedOption('liquid')" value="liquid"
+              >Liquid</option
+            >
+            <option value="yeast" :selected="selectedOption('preferment')"
+              >Preferment</option
+            >
+            <option value="salt" :selected="selectedOption('salt')"
+              >Salt</option
+            >
+            <option value="other" :selected="selectedOption('other')"
+              >Other</option
+            >
+          </select>
+          <div class="ingredient-editor-buttons">
+            <button
+              class="delete-ingredient-button"
+              @click="$emit('delete-ingredient', index)"
+            >
+              Delete Ingredient
+            </button>
+            <button @click="toggleEditor()" class="close-editor-button">
+              Done
+            </button>
+          </div>
+        </div>
+      </transition>
     </div>
     <div class="gray-divider"></div>
   </div>
