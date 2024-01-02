@@ -1,3 +1,5 @@
+Currently lives on https://sourdough-recipe-calculator.netlify.app
+
 # method-vue
 
 ## Project setup
